@@ -1341,39 +1341,14 @@
    * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
    * --------------------------------------------------------------------------
    */
+
+  
   /**
    * ------------------------------------------------------------------------
    * Constants
    * ------------------------------------------------------------------------
    */
 
-  const NAME$a = 'collapse';
-  const DATA_KEY$9 = 'bs.collapse';
-  const EVENT_KEY$9 = `.${DATA_KEY$9}`;
-  const DATA_API_KEY$5 = '.data-api';
-  const Default$9 = {
-    toggle: true,
-    parent: null
-  };
-  const DefaultType$9 = {
-    toggle: 'boolean',
-    parent: '(null|element)'
-  };
-  const EVENT_SHOW$5 = `show${EVENT_KEY$9}`;
-  const EVENT_SHOWN$5 = `shown${EVENT_KEY$9}`;
-  const EVENT_HIDE$5 = `hide${EVENT_KEY$9}`;
-  const EVENT_HIDDEN$5 = `hidden${EVENT_KEY$9}`;
-  const EVENT_CLICK_DATA_API$4 = `click${EVENT_KEY$9}${DATA_API_KEY$5}`;
-  const CLASS_NAME_SHOW$7 = 'show';
-  const CLASS_NAME_COLLAPSE = 'collapse';
-  const CLASS_NAME_COLLAPSING = 'collapsing';
-  const CLASS_NAME_COLLAPSED = 'collapsed';
-  const CLASS_NAME_DEEPER_CHILDREN = `:scope .${CLASS_NAME_COLLAPSE} .${CLASS_NAME_COLLAPSE}`;
-  const CLASS_NAME_HORIZONTAL = 'collapse-horizontal';
-  const WIDTH = 'width';
-  const HEIGHT = 'height';
-  const SELECTOR_ACTIVES = '.collapse.show, .collapse.collapsing';
-  const SELECTOR_DATA_TOGGLE$4 = '[data-bs-toggle="collapse"]';
   /**
    * ------------------------------------------------------------------------
    * Class Definition
@@ -1397,420 +1372,7 @@
    * add .Collapse to jQuery only if jQuery is present
    */
 
-  defineJQueryPlugin(Collapse);
-
-  var top = 'top';
-  var bottom = 'bottom';
-  var right = 'right';
-  var left = 'left';
-  var auto = 'auto';
-  var basePlacements = [top, bottom, right, left];
-  var start = 'start';
-  var end = 'end';
-  var clippingParents = 'clippingParents';
-  var viewport = 'viewport';
-  var popper = 'popper';
-  var reference = 'reference';
-  var variationPlacements = /*#__PURE__*/basePlacements.reduce(function (acc, placement) {
-    return acc.concat([placement + "-" + start, placement + "-" + end]);
-  }, []);
-  var placements = /*#__PURE__*/[].concat(basePlacements, [auto]).reduce(function (acc, placement) {
-    return acc.concat([placement, placement + "-" + start, placement + "-" + end]);
-  }, []); // modifiers that need to read the DOM
-
-  var beforeRead = 'beforeRead';
-  var read = 'read';
-  var afterRead = 'afterRead'; // pure-logic modifiers
-
-  var beforeMain = 'beforeMain';
-  var main = 'main';
-  var afterMain = 'afterMain'; // modifier with the purpose to write to the DOM (or write into a framework state)
-
-  var beforeWrite = 'beforeWrite';
-  var write = 'write';
-  var afterWrite = 'afterWrite';
-  var modifierPhases = [beforeRead, read, afterRead, beforeMain, main, afterMain, beforeWrite, write, afterWrite];
-  // and applies them to the HTMLElements such as popper and arrow
-
-
-  const applyStyles$1 = {
-    name: 'applyStyles',
-    enabled: true,
-    phase: 'write',
-    fn: applyStyles,
-    effect: effect$2,
-    requires: ['computeStyles']
-  };
-
-
-
-  var max = Math.max;
-  var min = Math.min;
-  var round = Math.round;
-
-
-  const arrow$1 = {
-    name: 'arrow',
-    enabled: true,
-    phase: 'main',
-    fn: arrow,
-    effect: effect$1,
-    requires: ['popperOffsets'],
-    requiresIfExists: ['preventOverflow']
-  };
-
-
-  var unsetSides = {
-    top: 'auto',
-    right: 'auto',
-    bottom: 'auto',
-    left: 'auto'
-  }; // Round the offsets to the nearest suitable subpixel based on the DPR.
-  // Zooming can change the DPR, but it seems to report a value that will
-  // cleanly divide the values into the appropriate subpixels.
-
-
-
-  const computeStyles$1 = {
-    name: 'computeStyles',
-    enabled: true,
-    phase: 'beforeWrite',
-    fn: computeStyles,
-    data: {}
-  };
-
-  var passive = {
-    passive: true
-  };
-
-
-  const eventListeners = {
-    name: 'eventListeners',
-    enabled: true,
-    phase: 'write',
-    fn: function fn() {},
-    effect: effect,
-    data: {}
-  };
-
-  var hash$1 = {
-    left: 'right',
-    right: 'left',
-    bottom: 'top',
-    top: 'bottom'
-  };
-                       
-  var hash = {
-    start: 'end',
-    end: 'start'
-  };
-
-
-
-
-  // of the `<html>` and `<body>` rect bounds if horizontally scrollable
-
-
-  /*
-  given a DOM element, return the list of all scroll parents, up the list of ancesors
-  until we get to the top window object. This list is what we attach scroll listeners
-  to, because if any of these parent elements scroll, we'll need to re-calculate the
-  reference element's position.
-  */
-
-
-
-
-
-  const flip$1 = {
-    name: 'flip',
-    enabled: true,
-    phase: 'main',
-    fn: flip,
-    requiresIfExists: ['offset'],
-    data: {
-      _skip: false
-    }
-  };
-
-
-
-  const hide$1 = {
-    name: 'hide',
-    enabled: true,
-    phase: 'main',
-    requiresIfExists: ['preventOverflow'],
-    fn: hide
-  };
-
-
-  const offset$1 = {
-    name: 'offset',
-    enabled: true,
-    phase: 'main',
-    requires: ['popperOffsets'],
-    fn: offset
-  };
-
-
-
-  const popperOffsets$1 = {
-    name: 'popperOffsets',
-    enabled: true,
-    phase: 'read',
-    fn: popperOffsets,
-    data: {}
-  };
-
- 
-
-
-  const preventOverflow$1 = {
-    name: 'preventOverflow',
-    enabled: true,
-    phase: 'main',
-    fn: preventOverflow,
-    requiresIfExists: ['offset']
-  };
-
-
-  var DEFAULT_OPTIONS = {
-    placement: 'bottom',
-    modifiers: [],
-    strategy: 'absolute'
-  };
-
-
-
-  function popperGenerator(generatorOptions) {
-    if (generatorOptions === void 0) {
-      generatorOptions = {};
-    }
-
-    var _generatorOptions = generatorOptions,
-        _generatorOptions$def = _generatorOptions.defaultModifiers,
-        defaultModifiers = _generatorOptions$def === void 0 ? [] : _generatorOptions$def,
-        _generatorOptions$def2 = _generatorOptions.defaultOptions,
-        defaultOptions = _generatorOptions$def2 === void 0 ? DEFAULT_OPTIONS : _generatorOptions$def2;
-    return function createPopper(reference, popper, options) {
-      if (options === void 0) {
-        options = defaultOptions;
-      }
-
-      var state = {
-        placement: 'bottom',
-        orderedModifiers: [],
-        options: Object.assign({}, DEFAULT_OPTIONS, defaultOptions),
-        modifiersData: {},
-        elements: {
-          reference: reference,
-          popper: popper
-        },
-        attributes: {},
-        styles: {}
-      };
-      var effectCleanupFns = [];
-      var isDestroyed = false;
-      var instance = {
-        state: state,
-        setOptions: function setOptions(setOptionsAction) {
-          var options = typeof setOptionsAction === 'function' ? setOptionsAction(state.options) : setOptionsAction;
-          cleanupModifierEffects();
-          state.options = Object.assign({}, defaultOptions, state.options, options);
-          state.scrollParents = {
-            reference: isElement(reference) ? listScrollParents(reference) : reference.contextElement ? listScrollParents(reference.contextElement) : [],
-            popper: listScrollParents(popper)
-          }; // Orders the modifiers based on their dependencies and `phase`
-          // properties
-
-          var orderedModifiers = orderModifiers(mergeByName([].concat(defaultModifiers, state.options.modifiers))); // Strip out disabled modifiers
-
-          state.orderedModifiers = orderedModifiers.filter(function (m) {
-            return m.enabled;
-          }); // Validate the provided modifiers so that the consumer will get warned
-
-          runModifierEffects();
-          return instance.update();
-        },
-        // Sync update – it will always be executed, even if not necessary. This
-        // is useful for low frequency updates where sync behavior simplifies the
-        // logic.
-        // For high frequency updates (e.g. `resize` and `scroll` events), always
-        // prefer the async Popper#update method
-        forceUpdate: function forceUpdate() {
-          if (isDestroyed) {
-            return;
-          }
-
-          var _state$elements = state.elements,
-              reference = _state$elements.reference,
-              popper = _state$elements.popper; // Don't proceed if `reference` or `popper` are not valid elements
-          // anymore
-
-          if (!areValidElements(reference, popper)) {
-
-            return;
-          } // Store the reference and popper rects to be read by modifiers
-
-
-          state.rects = {
-            reference: getCompositeRect(reference, getOffsetParent(popper), state.options.strategy === 'fixed'),
-            popper: getLayoutRect(popper)
-          }; // Modifiers have the ability to reset the current update cycle. The
-          // most common use case for this is the `flip` modifier changing the
-          // placement, which then needs to re-run all the modifiers, because the
-          // logic was previously ran for the previous placement and is therefore
-          // stale/incorrect
-
-          state.reset = false;
-          state.placement = state.options.placement; // On each update cycle, the `modifiersData` property for each modifier
-          // is filled with the initial data specified by the modifier. This means
-          // it doesn't persist and is fresh on each update.
-          // To ensure persistent data, use `${name}#persistent`
-
-          state.orderedModifiers.forEach(function (modifier) {
-            return state.modifiersData[modifier.name] = Object.assign({}, modifier.data);
-          });
-
-          for (var index = 0; index < state.orderedModifiers.length; index++) {
-
-            if (state.reset === true) {
-              state.reset = false;
-              index = -1;
-              continue;
-            }
-
-            var _state$orderedModifie = state.orderedModifiers[index],
-                fn = _state$orderedModifie.fn,
-                _state$orderedModifie2 = _state$orderedModifie.options,
-                _options = _state$orderedModifie2 === void 0 ? {} : _state$orderedModifie2,
-                name = _state$orderedModifie.name;
-
-            if (typeof fn === 'function') {
-              state = fn({
-                state: state,
-                options: _options,
-                name: name,
-                instance: instance
-              }) || state;
-            }
-          }
-        },
-        // Async and optimistically optimized update – it will not be executed if
-        // not necessary (debounced to run at most once-per-tick)
-        update: debounce(function () {
-          return new Promise(function (resolve) {
-            instance.forceUpdate();
-            resolve(state);
-          });
-        }),
-        destroy: function destroy() {
-          cleanupModifierEffects();
-          isDestroyed = true;
-        }
-      };
-
-      if (!areValidElements(reference, popper)) {
-
-        return instance;
-      }
-
-      instance.setOptions(options).then(function (state) {
-        if (!isDestroyed && options.onFirstUpdate) {
-          options.onFirstUpdate(state);
-        }
-      }); // Modifiers have the ability to execute arbitrary code before the first
-      // update cycle runs. They will be executed in the same order as the update
-      // cycle. This is useful when a modifier adds some persistent data that
-      // other modifiers need to use, but the modifier is run after the dependent
-      // one.
-
-      function runModifierEffects() {
-        state.orderedModifiers.forEach(function (_ref3) {
-          var name = _ref3.name,
-              _ref3$options = _ref3.options,
-              options = _ref3$options === void 0 ? {} : _ref3$options,
-              effect = _ref3.effect;
-
-          if (typeof effect === 'function') {
-            var cleanupFn = effect({
-              state: state,
-              name: name,
-              instance: instance,
-              options: options
-            });
-
-            var noopFn = function noopFn() {};
-
-            effectCleanupFns.push(cleanupFn || noopFn);
-          }
-        });
-      }
-
-      function cleanupModifierEffects() {
-        effectCleanupFns.forEach(function (fn) {
-          return fn();
-        });
-        effectCleanupFns = [];
-      }
-
-      return instance;
-    };
-  }
-  var createPopper$2 = /*#__PURE__*/popperGenerator(); // eslint-disable-next-line import/no-unused-modules
-
-  var defaultModifiers$1 = [eventListeners, popperOffsets$1, computeStyles$1, applyStyles$1];
-  var createPopper$1 = /*#__PURE__*/popperGenerator({
-    defaultModifiers: defaultModifiers$1
-  }); // eslint-disable-next-line import/no-unused-modules
-
-  var defaultModifiers = [eventListeners, popperOffsets$1, computeStyles$1, applyStyles$1, offset$1, flip$1, preventOverflow$1, arrow$1, hide$1];
-  var createPopper = /*#__PURE__*/popperGenerator({
-    defaultModifiers: defaultModifiers
-  }); // eslint-disable-next-line import/no-unused-modules
-
-  const Popper = /*#__PURE__*/Object.freeze({
-    __proto__: null,
-    popperGenerator,
-    detectOverflow,
-    createPopperBase: createPopper$2,
-    createPopper,
-    createPopperLite: createPopper$1,
-    top,
-    bottom,
-    right,
-    left,
-    auto,
-    basePlacements,
-    start,
-    end,
-    clippingParents,
-    viewport,
-    popper,
-    reference,
-    variationPlacements,
-    placements,
-    beforeRead,
-    read,
-    afterRead,
-    beforeMain,
-    main,
-    afterMain,
-    beforeWrite,
-    write,
-    afterWrite,
-    modifierPhases,
-    applyStyles: applyStyles$1,
-    arrow: arrow$1,
-    computeStyles: computeStyles$1,
-    eventListeners,
-    flip: flip$1,
-    hide: hide$1,
-    offset: offset$1,
-    popperOffsets: popperOffsets$1,
-    preventOverflow: preventOverflow$1
-  });
-
+  
   /**
    * --------------------------------------------------------------------------
    * Bootstrap (v5.1.3): dropdown.js
@@ -2350,40 +1912,7 @@
    * ------------------------------------------------------------------------
    */
 
-  const NAME$6 = 'modal';
-  const DATA_KEY$6 = 'bs.modal';
-  const EVENT_KEY$6 = `.${DATA_KEY$6}`;
-  const DATA_API_KEY$3 = '.data-api';
-  const ESCAPE_KEY$1 = 'Escape';
-  const Default$5 = {
-    backdrop: true,
-    keyboard: true,
-    focus: true
-  };
-  const DefaultType$5 = {
-    backdrop: '(boolean|string)',
-    keyboard: 'boolean',
-    focus: 'boolean'
-  };
-  const EVENT_HIDE$3 = `hide${EVENT_KEY$6}`;
-  const EVENT_HIDE_PREVENTED = `hidePrevented${EVENT_KEY$6}`;
-  const EVENT_HIDDEN$3 = `hidden${EVENT_KEY$6}`;
-  const EVENT_SHOW$3 = `show${EVENT_KEY$6}`;
-  const EVENT_SHOWN$3 = `shown${EVENT_KEY$6}`;
-  const EVENT_RESIZE = `resize${EVENT_KEY$6}`;
-  const EVENT_CLICK_DISMISS = `click.dismiss${EVENT_KEY$6}`;
-  const EVENT_KEYDOWN_DISMISS$1 = `keydown.dismiss${EVENT_KEY$6}`;
-  const EVENT_MOUSEUP_DISMISS = `mouseup.dismiss${EVENT_KEY$6}`;
-  const EVENT_MOUSEDOWN_DISMISS = `mousedown.dismiss${EVENT_KEY$6}`;
-  const EVENT_CLICK_DATA_API$2 = `click${EVENT_KEY$6}${DATA_API_KEY$3}`;
-  const CLASS_NAME_OPEN = 'modal-open';
-  const CLASS_NAME_FADE$3 = 'fade';
-  const CLASS_NAME_SHOW$4 = 'show';
-  const CLASS_NAME_STATIC = 'modal-static';
-  const OPEN_SELECTOR$1 = '.modal.show';
-  const SELECTOR_DIALOG = '.modal-dialog';
-  const SELECTOR_MODAL_BODY = '.modal-body';
-  const SELECTOR_DATA_TOGGLE$2 = '[data-bs-toggle="modal"]';
+  
   /**
    * ------------------------------------------------------------------------
    * Class Definition
@@ -2398,7 +1927,7 @@
    */
 
 
-  enableDismissTrigger(Modal);
+ 
   /**
    * ------------------------------------------------------------------------
    * jQuery
@@ -2406,7 +1935,7 @@
    * add .Modal to jQuery only if jQuery is present
    */
 
-  defineJQueryPlugin(Modal);
+ 
 
   /**
    * --------------------------------------------------------------------------
@@ -3445,34 +2974,7 @@
    * ------------------------------------------------------------------------
    */
 
-  const NAME$3 = 'popover';
-  const DATA_KEY$3 = 'bs.popover';
-  const EVENT_KEY$3 = `.${DATA_KEY$3}`;
-  const CLASS_PREFIX = 'bs-popover';
-  const Default$2 = { ...Tooltip.Default,
-    placement: 'right',
-    offset: [0, 8],
-    trigger: 'click',
-    content: '',
-    template: '<div class="popover" role="tooltip">' + '<div class="popover-arrow"></div>' + '<h3 class="popover-header"></h3>' + '<div class="popover-body"></div>' + '</div>'
-  };
-  const DefaultType$2 = { ...Tooltip.DefaultType,
-    content: '(string|element|function)'
-  };
-  const Event$1 = {
-    HIDE: `hide${EVENT_KEY$3}`,
-    HIDDEN: `hidden${EVENT_KEY$3}`,
-    SHOW: `show${EVENT_KEY$3}`,
-    SHOWN: `shown${EVENT_KEY$3}`,
-    INSERTED: `inserted${EVENT_KEY$3}`,
-    CLICK: `click${EVENT_KEY$3}`,
-    FOCUSIN: `focusin${EVENT_KEY$3}`,
-    FOCUSOUT: `focusout${EVENT_KEY$3}`,
-    MOUSEENTER: `mouseenter${EVENT_KEY$3}`,
-    MOUSELEAVE: `mouseleave${EVENT_KEY$3}`
-  };
-  const SELECTOR_TITLE = '.popover-header';
-  const SELECTOR_CONTENT = '.popover-body';
+  
   /**
    * ------------------------------------------------------------------------
    * Class Definition
@@ -3488,7 +2990,7 @@
    */
 
 
-  defineJQueryPlugin(Popover);
+  
 
   /**
    * --------------------------------------------------------------------------
@@ -3502,35 +3004,7 @@
    * ------------------------------------------------------------------------
    */
 
-  const NAME$2 = 'scrollspy';
-  const DATA_KEY$2 = 'bs.scrollspy';
-  const EVENT_KEY$2 = `.${DATA_KEY$2}`;
-  const DATA_API_KEY$1 = '.data-api';
-  const Default$1 = {
-    offset: 10,
-    method: 'auto',
-    target: ''
-  };
-  const DefaultType$1 = {
-    offset: 'number',
-    method: 'string',
-    target: '(string|element)'
-  };
-  const EVENT_ACTIVATE = `activate${EVENT_KEY$2}`;
-  const EVENT_SCROLL = `scroll${EVENT_KEY$2}`;
-  const EVENT_LOAD_DATA_API = `load${EVENT_KEY$2}${DATA_API_KEY$1}`;
-  const CLASS_NAME_DROPDOWN_ITEM = 'dropdown-item';
-  const CLASS_NAME_ACTIVE$1 = 'active';
-  const SELECTOR_DATA_SPY = '[data-bs-spy="scroll"]';
-  const SELECTOR_NAV_LIST_GROUP$1 = '.nav, .list-group';
-  const SELECTOR_NAV_LINKS = '.nav-link';
-  const SELECTOR_NAV_ITEMS = '.nav-item';
-  const SELECTOR_LIST_ITEMS = '.list-group-item';
-  const SELECTOR_LINK_ITEMS = `${SELECTOR_NAV_LINKS}, ${SELECTOR_LIST_ITEMS}, .${CLASS_NAME_DROPDOWN_ITEM}`;
-  const SELECTOR_DROPDOWN$1 = '.dropdown';
-  const SELECTOR_DROPDOWN_TOGGLE$1 = '.dropdown-toggle';
-  const METHOD_OFFSET = 'offset';
-  const METHOD_POSITION = 'position';
+  
   /**
    * ------------------------------------------------------------------------
    * Class Definition
@@ -3545,9 +3019,7 @@
    */
 
 
-  EventHandler.on(window, EVENT_LOAD_DATA_API, () => {
-    SelectorEngine.find(SELECTOR_DATA_SPY).forEach(spy => new ScrollSpy(spy));
-  });
+
   /**
    * ------------------------------------------------------------------------
    * jQuery
@@ -3555,7 +3027,7 @@
    * add .ScrollSpy to jQuery only if jQuery is present
    */
 
-  defineJQueryPlugin(ScrollSpy);
+ 
 
   /**
    * --------------------------------------------------------------------------
@@ -3569,26 +3041,7 @@
    * ------------------------------------------------------------------------
    */
 
-  const NAME$1 = 'tab';
-  const DATA_KEY$1 = 'bs.tab';
-  const EVENT_KEY$1 = `.${DATA_KEY$1}`;
-  const DATA_API_KEY = '.data-api';
-  const EVENT_HIDE$1 = `hide${EVENT_KEY$1}`;
-  const EVENT_HIDDEN$1 = `hidden${EVENT_KEY$1}`;
-  const EVENT_SHOW$1 = `show${EVENT_KEY$1}`;
-  const EVENT_SHOWN$1 = `shown${EVENT_KEY$1}`;
-  const EVENT_CLICK_DATA_API = `click${EVENT_KEY$1}${DATA_API_KEY}`;
-  const CLASS_NAME_DROPDOWN_MENU = 'dropdown-menu';
-  const CLASS_NAME_ACTIVE = 'active';
-  const CLASS_NAME_FADE$1 = 'fade';
-  const CLASS_NAME_SHOW$1 = 'show';
-  const SELECTOR_DROPDOWN = '.dropdown';
-  const SELECTOR_NAV_LIST_GROUP = '.nav, .list-group';
-  const SELECTOR_ACTIVE = '.active';
-  const SELECTOR_ACTIVE_UL = ':scope > li > .active';
-  const SELECTOR_DATA_TOGGLE = '[data-bs-toggle="tab"], [data-bs-toggle="pill"], [data-bs-toggle="list"]';
-  const SELECTOR_DROPDOWN_TOGGLE = '.dropdown-toggle';
-  const SELECTOR_DROPDOWN_ACTIVE_CHILD = ':scope > .dropdown-menu .active';
+  
   /**
    * ------------------------------------------------------------------------
    * Class Definition
@@ -3608,7 +3061,7 @@
    * add .Tab to jQuery only if jQuery is present
    */
 
-  defineJQueryPlugin(Tab);
+
 
   /**
    * --------------------------------------------------------------------------
@@ -3622,32 +3075,7 @@
    * ------------------------------------------------------------------------
    */
 
-  const NAME = 'toast';
-  const DATA_KEY = 'bs.toast';
-  const EVENT_KEY = `.${DATA_KEY}`;
-  const EVENT_MOUSEOVER = `mouseover${EVENT_KEY}`;
-  const EVENT_MOUSEOUT = `mouseout${EVENT_KEY}`;
-  const EVENT_FOCUSIN = `focusin${EVENT_KEY}`;
-  const EVENT_FOCUSOUT = `focusout${EVENT_KEY}`;
-  const EVENT_HIDE = `hide${EVENT_KEY}`;
-  const EVENT_HIDDEN = `hidden${EVENT_KEY}`;
-  const EVENT_SHOW = `show${EVENT_KEY}`;
-  const EVENT_SHOWN = `shown${EVENT_KEY}`;
-  const CLASS_NAME_FADE = 'fade';
-  const CLASS_NAME_HIDE = 'hide'; // @deprecated - kept here only for backwards compatibility
-
-  const CLASS_NAME_SHOW = 'show';
-  const CLASS_NAME_SHOWING = 'showing';
-  const DefaultType = {
-    animation: 'boolean',
-    autohide: 'boolean',
-    delay: 'number'
-  };
-  const Default = {
-    animation: true,
-    autohide: true,
-    delay: 5000
-  };
+  
   /**
    * ------------------------------------------------------------------------
    * Class Definition
@@ -3655,7 +3083,7 @@
    */
 
 
-  enableDismissTrigger(Toast);
+ 
   /**
    * ------------------------------------------------------------------------
    * jQuery
@@ -3663,7 +3091,7 @@
    * add .Toast to jQuery only if jQuery is present
    */
 
-  defineJQueryPlugin(Toast);
+ 
 
   /**
    * --------------------------------------------------------------------------
@@ -3675,14 +3103,8 @@
     Alert,
     Button,
     Carousel,
-    Collapse,
     Dropdown,
-    Modal,
     Offcanvas,
-    Popover,
-    ScrollSpy,
-    Tab,
-    Toast,
     Tooltip
   };
 
