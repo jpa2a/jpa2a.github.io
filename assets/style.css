@@ -48,6 +48,8 @@ body {
 	padding-inline: 100px;
 	padding-block: 100px;
 	position: relative;
+	width: 100%;
+	height: auto;
 }
 
 .picture.left::before {
