@@ -85,6 +85,7 @@ body {
 	font-weight: 800;
 	font-style: italic;
 	width: 60%;
+	font-size: 1rem;
 }
 #about-me p {
 	width: 80%;
@@ -97,12 +98,17 @@ body {
 .title{
 	text-align: center;
 	padding-block: 2em;
+	font-size: calc(1.3rem + .6vw);
+}
+
+.left{
+	text-align: left;
 }
 .gallery .nav {
 	justify-content: center;
 }
 .nav-pills .nav-link.active, .nav-pills .show > .nav-link {
-	color: #fff;
+	color: black;
 	background-color: #BEB45A;
 	border-radius:0 ;
 }
