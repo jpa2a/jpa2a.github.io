@@ -355,3 +355,12 @@ input[type="submit"] {
 	}
 }
 
+.nina__img{
+	width: 400px ;
+	height: 400px ;
+	max-width: 100%;
+	 height: auto;
+
+
+}
+
