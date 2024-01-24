@@ -46,8 +46,10 @@ body {
 	display: flex;
 	display: block;
 	background-color: #F6D2B8;
-	padding-inline: 100px;
-	padding-block: 100px;
+/* 	padding-inline: 100px;
+	padding-block: 100px; */
+	padding-inline: 5rem;
+	padding-block: 5rem;
 	position: relative;
 	width: 100%;
 	/* height: auto; */
