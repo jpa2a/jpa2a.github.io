@@ -262,7 +262,7 @@ input[type="submit"] {
 		margin-top: 0;
 		margin-bottom: 1em;
 	}
-	#about-me h6, #about-me p {
+	#about-me h4, #about-me p {
 		width: 100%;
 	}
 }
@@ -365,7 +365,7 @@ input[type="submit"] {
 	width: 400px ;
 	height: 400px ;
 	max-width: 100%;
-	 height: auto;
+	height: auto;
 
 
 }
