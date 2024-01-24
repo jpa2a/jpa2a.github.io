@@ -44,6 +44,7 @@ body {
 
 #about {
 	display: flex;
+	display: block;
 	background-color: #F6D2B8;
 	padding-inline: 100px;
 	padding-block: 100px;
