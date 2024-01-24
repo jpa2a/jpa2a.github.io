@@ -50,7 +50,7 @@ body {
 	padding-block: 100px;
 	position: relative;
 	width: 100%;
-	height: auto;
+	/* height: auto; */
 }
 
 .picture.left::before {
