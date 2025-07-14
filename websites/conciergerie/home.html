@@ -1,0 +1,166 @@
+
+<style>
+
+
+.bgimg-1, .bgimg-2, .bgimg-3 {
+  position: relative;
+  opacity: 0.65;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+}
+.bgimg-1 {
+  background-image: url("assets/images/Gmail/1000010456.png");
+  min-height: 100vh;
+   display: flex; /* make it easier to center */
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.bgimg-2 {
+  background-image: url("assets/images/Gmail/1000010457.png");
+  min-height: 400px;
+}
+
+.bgimg-3 {
+  background-image: url("assets/images/Gmail/1000010458.png");
+  min-height: 400px;
+}
+/*
+.caption {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 100%;
+  text-align: center;
+  color: #000;
+}
+*/
+
+.caption {
+  text-align: center;
+  z-index: 1;
+ /* background-color: blue;*/
+  height: 100%;
+  display: flex;
+}
+
+.caption-wrapper {
+  position: relative;
+ 
+  display: flex;
+  align-items: center;      /* Vertical center */
+  justify-content: center;  /* Horizontal center */
+}
+
+.caption span.border {
+  background-color: #111;
+  color: #fff;
+  padding: 18px;
+  font-size: 25px;
+  letter-spacing: 10px;
+}
+
+.caption div.hero-text{
+  color: #fff;
+  padding: 18px;
+  font-size: 25px;
+  letter-spacing: 10px;
+}
+
+h3 {
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  font: 20px "Lato", sans-serif;
+  color: #111;
+}
+
+.img-logo{
+  height: 300px;
+  width: auto;
+  margin-right: 30px;
+}
+
+.img-logo img{
+  height: 100%;
+  width: auto;
+}
+
+.hero-text{
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  white-space: pre;
+  flex-direction: column;
+
+}
+.line {
+  display: block;
+  overflow: hidden;
+}
+
+/* Turn off parallax scrolling for tablets and phones */
+@media only screen and (max-device-width: 1024px) {
+  .bgimg-1, .bgimg-2, .bgimg-3 {
+    background-attachment: scroll;
+  }
+}
+
+</style>
+<body>
+
+<div class="bgimg-1">
+  <div  class="caption-wrapper">
+  <div class="caption">
+    <div class="img-logo fade-inX"><img src="assets/images/nova_home_logoText.png" /></div>
+  <div class="hero-text">
+  <div class="line">Bienvenue chez nova home</div>
+  <div class="line">La conciergerie de luxe</div>
+</div>
+  
+  </div>
+  </div>
+</div>
+
+<div style="color: #777;background-color:white;text-align:center;padding:50px 80px;text-align: justify;">
+  <h3 style="text-align:center;">TITRE section 1</h3>
+  <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
+</div>
+
+<div class="bgimg-2">
+  <div class="caption">
+  <span class="border" style="background-color:transparent;font-size:25px;color: #f7f7f7;">SECTION 2</span>
+  </div>
+</div>
+
+<div style="position:relative;">
+  <div style="color:#ddd;background-color:#282E34;text-align:center;padding:50px 80px;text-align: justify;">
+  <p>Section 3</p>
+  </div>
+</div>
+
+<div class="bgimg-3">
+  <div   class="caption-wrapper fade-inY">
+  <div class="caption">
+  <span class="border" style="background-color:transparent;font-size:25px;color: #f7f7f7;">SECTION 4</span>
+  </div>
+  </div>
+</div>
+<div style="position:relative;">
+  <div style="color:#ddd;background-color:#282E34;text-align:center;padding:50px 80px;text-align: justify;">
+  <p>Section 5</p>
+  </div>
+</div>
+
+<div class="bgimg-1">
+  <div class="caption">
+  <span class="border">BAS DE PAGE</span>
+  </div>
+</div>
+
+</body>
+</html>

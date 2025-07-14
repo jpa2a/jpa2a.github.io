@@ -1,0 +1,70 @@
+ <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+    }
+
+    .parallax-section {
+      position: relative;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    .parallax-bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 150%; /* Bigger to move */
+      /*background-image: url('assets/images/Gmail/1000010457.png');*/
+      background-size: cover;
+      background-position: center;
+      z-index: -1;
+      will-change: transform;
+    }
+
+    .bg1{
+          background-image: url('assets/images/Gmail/1000010457.png');
+    }
+
+    .bg2{
+          background-image: url('assets/images/Gmail/1000010460.png');
+    }
+
+    .paracontent {
+      position: relative;
+      z-index: 2;
+      color: white;
+      padding: 150px;
+    }
+
+    section.filler {
+      height: 300px;
+      background: #111;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  </style>
+</head>
+<body>
+
+  <section class="parallax-section">
+    <div class="parallax-bg bg1"></div>
+    <div class="paracontent">
+      <h2>Parallax Title</h2>
+      <p>This is some sample content over the parallax background.</p>
+    </div>
+  </section>
+
+  <section class="parallax-section">
+    <div class="parallax-bg bg2"></div>
+    <div class="paracontent">
+      <h2>Parallax Title</h2>
+      <p>This is some sample content over the parallax background.</p>
+    </div>
+  </section>
+  <section class="filler"><h2>More Content</h2></section>
+

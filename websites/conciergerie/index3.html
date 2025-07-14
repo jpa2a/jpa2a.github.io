@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GSAP Parallax</title>
+  <script src="https://unpkg.com/gsap@3/dist/gsap.min.js"></script>
+  <script src="https://unpkg.com/gsap@3/dist/ScrollTrigger.min.js"></script>
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+      font-family: sans-serif;
+    }
+
+    .parallax-section {
+      position: relative;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    .parallax-bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 150%; /* Bigger to move */
+      background-image: url('https://picsum.photos/id/1015/1200/800'); /* public test image */
+      background-size: cover;
+      background-position: center;
+      z-index: -1;
+    }
+
+    .content {
+      position: relative;
+      z-index: 2;
+      color: white;
+      padding: 40px;
+    }
+
+    section.filler {
+      height: 100vh;
+      background: #111;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  </style>
+</head>
+<body>
+
+  <section class="parallax-section">
+    <div class="parallax-bg"></div>
+    <div class="content">
+      <h2>Parallax Title</h2>
+      <p>This is some sample content over the parallax background.</p>
+    </div>
+  </section>
+
+  <section class="filler"><h2>Scroll Down</h2></section>
+  <section class="filler"><h2>More Content</h2></section>
+
+  <script>
+    window.addEventListener("DOMContentLoaded", () => {
+      gsap.registerPlugin(ScrollTrigger);
+
+      gsap.to(".parallax-bg", {
+        y: "-25%",
+        ease: "none",
+        scrollTrigger: {
+          trigger: ".parallax-section",
+          start: "top bottom",
+          end: "bottom top",
+          scrub: true
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>
