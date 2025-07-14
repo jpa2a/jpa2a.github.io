@@ -16,7 +16,7 @@
     }
 
     .container {
-      height: 400vh; /* More scroll range */
+      height: 600vh; /* More scroll range */
     }
 
     .text {
@@ -45,6 +45,8 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
   <script>
     gsap.registerPlugin(ScrollTrigger);
+    ScrollTrigger.normalizeScroll(true);
+
 
     // Fade OUT first text at ~20% scroll
     gsap.to(".first", {
@@ -52,7 +54,8 @@
         trigger: ".container",
         start: "top top",
         end: "20%",
-        scrub: true
+        scrub: true,
+        invalidateOnRefresh: true
       },
       opacity: 0
     });
@@ -63,7 +66,8 @@
         trigger: ".container",
         start: "20%",
         end: "40%",
-        scrub: true
+        scrub: true,
+        invalidateOnRefresh: true
       },
       opacity: 1
     });
@@ -72,7 +76,8 @@
         trigger: ".container",
         start: "40%",
         end: "60%",
-        scrub: true
+        scrub: true,
+        invalidateOnRefresh: true
       },
       opacity: 0
     });
@@ -83,7 +88,8 @@
         trigger: ".container",
         start: "60%",
         end: "80%",
-        scrub: true
+        scrub: true,
+        invalidateOnRefresh: true
       },
       opacity: 1
     });
