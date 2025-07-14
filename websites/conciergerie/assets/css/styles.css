@@ -137,7 +137,7 @@ height: 70vh;
 
 .header.scrolled {
   background-color: rgba(255, 255, 255, 0.3); /* adjust opacity & color as needed */
-  backdrop-filter: blur(5px);
+  backdrop-filter: blur(2px);
   -webkit-backdrop-filter: blur(10px); /* for Safari */
   box-shadow: 0 2px 10px rgba(0,0,0,0.1); /* optional subtle shadow */
 }
@@ -237,6 +237,7 @@ height: 70vh;
 
 
 #menu a.scrolled{
+  
    color:rgb(255, 255, 255);
    text-shadow: rgb(0, 0, 0) 1px 0 10px;
 }
@@ -264,6 +265,14 @@ height: 70vh;
   height: 2px;
   background-color: var(--black-color);
   transition: width .4s ease-out;
+}
+@media screen and (min-width: 1150px) {
+
+
+.nav__link.scrolled span::after {
+   background-color: white;
+   box-shadow: rgb(0, 0, 0) 1px 0 10px;
+}
 }
 
 /* Animation link on hover */

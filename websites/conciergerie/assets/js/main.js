@@ -182,7 +182,7 @@ updateActiveLink(page);
 
         initScrollAnimations();
         initParallax();
-        window.scrollTo({ top: 0, behavior: "smooth" });
+       /* window.scrollTo({ top: 0, behavior: "smooth" });*/
 
         if (push) {
           history.pushState({ page }, "", `?page=${page}`);
@@ -202,6 +202,7 @@ updateActiveLink(page);
       });
   }, 500); // Match your fade-out transition time
  // navMenu.classList.remove('show-menu');
+ window.scrollTo({ top: 0, behavior: "smooth" });
 }
 
 

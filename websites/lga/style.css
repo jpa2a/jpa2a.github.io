@@ -1,0 +1,28 @@
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow-x: hidden;
+  background: #111;
+  color: white;
+  font-family: sans-serif;
+}
+
+.container {
+  height: 300vh; /* Enough scroll space for 3 scenes */
+  position: relative;
+}
+
+.text {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 3rem;
+  opacity: 0;
+  pointer-events: none;
+}
+
+ .first {
+      opacity: 1; /* Make first text visible on load */
+    }
