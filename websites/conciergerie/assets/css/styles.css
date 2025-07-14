@@ -70,6 +70,7 @@ html {
   scroll-behavior: smooth;
   height: 100%;
   overflow-x: hidden;
+  overflow-y: scroll;
 }
 
 body {
@@ -82,7 +83,7 @@ body {
   flex-direction: column;
   justify-content:space-between;
   padding-top: 4rem;
-  overflow-y: scroll; 
+ 
  
 }
 
@@ -130,6 +131,16 @@ height: 70vh;
   background-color: var(--white-color);
   z-index: var(--z-fixed);
   box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+}
+
+@media screen and (min-width: 1150px) {
+
+.header.scrolled {
+  background-color: rgba(255, 255, 255, 0.3); /* adjust opacity & color as needed */
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(10px); /* for Safari */
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1); /* optional subtle shadow */
+}
 }
 
 #navbar{
@@ -220,6 +231,15 @@ height: 70vh;
   display: inline-flex;
   align-items: center;
   transition: opacity .4s;
+}
+
+@media screen and (min-width: 1150px) {
+
+
+#menu a.scrolled{
+   color:rgb(255, 255, 255);
+   text-shadow: rgb(0, 0, 0) 1px 0 10px;
+}
 }
 /*
 .nav__link i {

@@ -37,6 +37,36 @@ window.addEventListener('scroll', () => {
 
 });
 
+window.addEventListener('scroll', function () {
+  const navbar = document.getElementById('navbar');
+  if (window.scrollY > 10) {
+    navbar.classList.add('scrolled');
+  } else {
+    navbar.classList.remove('scrolled');
+  }
+  /*
+  const navlink = document.querySelectorAll('.nav__link');
+  if (window.scrollY > 10) {
+    navlink.classList.add('scrolled');
+  } else {
+    navlink.classList.remove('scrolled');
+  }*/
+  
+  const navlink = document.querySelectorAll('#menu a');
+  navlink.forEach(navlink => {
+    if (window.scrollY > 10) {
+    navlink.classList.add('scrolled');
+  } else {
+    navlink.classList.remove('scrolled');
+  }
+  });
+
+
+});
+
+
+
+
 //fade in
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -68,18 +98,7 @@ document.addEventListener("DOMContentLoaded", () => {
  function initParallax() {
   // kill old triggers to prevent duplicates
   ScrollTrigger.getAll().forEach(trigger => trigger.kill());
-/*
-  gsap.to(".parallax-bg", {
-    yPercent: -25,
-    ease: "none",
-    scrollTrigger: {
-    trigger: ".parallax-section",
-    start: "top bottom",
-    end: "bottom top",
-    scrub: 1, // <-- smoothing: try values between 0.5 and 2
-    }
-  });
-  */
+
   document.querySelectorAll('.parallax-section').forEach(section => {
     const bg = section.querySelector('.parallax-bg');
 
@@ -95,21 +114,7 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
   });
-  /*
- SplitText.create(".hero-text", {
-  type: "words, chars",
-  reduceWhiteSpace: false, 
-  onSplit(self) { // runs every time it splits
-    gsap.from(self.chars, {
-      duration: 1, 
-      y: 100, 
-      autoAlpha: 0, 
-      stagger: 0.05
-     
-    });
-  }
-});
-*/
+
 const lines = gsap.utils.toArray(".hero-text .line");
 lines.forEach(line => {
   let split = new SplitText(line, { type: "chars" });
@@ -378,6 +383,9 @@ function vignets(){
 window.addEventListener('resize', () => {
   moveHighlightToActive();
 });
+
+
+
 
 
 
