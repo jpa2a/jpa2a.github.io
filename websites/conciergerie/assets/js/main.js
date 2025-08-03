@@ -80,7 +80,7 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     },
     {
-      threshold: 0.1 // 10% of element must be visible to trigger
+      threshold: 1 // 10% of element must be visible to trigger
     }
   );
 

@@ -1,6 +1,10 @@
 /*=============== GOOGLE FONTS ===============*/
 @import url("https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@400;500&display=swap");
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&family=Fauna+One&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 /*=============== VARIABLES CSS ===============*/
 :root {
   --header-height: 3.5rem;
@@ -98,9 +102,134 @@ a {
 .proprio{
 height: 70vh;
 }
-
+/*
 .services{
 height: 70vh;
+}
+*/
+.services{
+  color: #333;
+  background-color:rgba(219, 172, 52, 0.75);
+}
+.services-container{
+  display: flex;
+}
+
+.services-cont-img{
+  display: flex;
+  width: 50%;
+  height: 500px;
+  background-color: white;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+
+}
+
+.services-cont-img img{
+  width: 95%;
+  height: 95%;
+  object-fit: cover;
+}
+
+.services-cont-text{
+  width: 50%;
+  margin-left: 50px;
+  padding-right: 150px;
+}
+
+.services-cont-title{
+  font-family: "Cinzel", sans-serif;
+  font-weight: 600;
+  font-size: 24px;
+  margin-bottom: 30px;
+}
+
+.services-list{
+  display: flex;
+  font-family: "Fauna One", serif;
+  font-weight: 100;
+  font-size: 15px;
+  margin-block: 20px;
+}
+
+.services-list i{
+  margin-right: 10px;
+}
+
+.nosservices{
+  color:#282E34;
+  background-color:white;
+}
+
+.nosservices-cards{
+   display: grid;
+   column-gap: 20px;
+   grid-template-columns: 1fr 1fr 1fr 1fr;
+   width: 100%;
+}
+
+.service-card{
+  /*background-color: #282E34;*/
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+
+  border-radius: 10px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+
+}
+
+.service-card-img{
+  width: 100%;
+  height: 200px;
+}
+
+.service-card-img img{
+    width: 100%;
+  height: 100%;
+  object-fit:cover;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.service-card-title{
+  margin-top: 10px;
+  text-align: center;
+  margin-bottom: 20px;
+  margin-inline: 20px;
+  font-weight: bold;
+  font-family: "Cinzel", sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  border-bottom: 1px solid #282E34 ;
+  padding-bottom: 20px;
+}
+
+.service-card-text{
+  margin-inline: 20px;
+  margin-bottom: 20px;
+  font-family: "Fauna One", serif;
+  font-weight: 100;
+  font-size: 15px;
+
+}
+
+.nosservices-title{
+ text-align: center;
+ margin-bottom: 50px;
+ font-family: "Cinzel", sans-serif;
+  font-weight: 600;
+  font-size: 24px;
+}
+
+.nouschoisir{
+  background-color: #282E34;
+  color: white;
+  text-align:center;
+  padding:50px 80px;
+  text-align: justify;
 }
 
 /*=============== REUSABLE CSS CLASSES ===============*/
@@ -434,7 +563,7 @@ footer{
 
 .fade-inX {
   opacity: 0;
-  transform: translateX(50px);
+  transform: translateX(200px);
   transition: opacity 0.6s ease-out, transform 1s ease-out;
   will-change: opacity, transform;
 }
@@ -534,6 +663,73 @@ footer{
 }
 
 
+/* presentation */
+
+.presentation{
+  display: flex;
+}
+
+.presentation-text{
+margin-right: 20px;
+padding-right: 100px;
+width: 50%;
+font-family: "Fauna One", serif;
+
+}
+
+.presentation-text p{
+  margin-bottom: 15px;
+}
+
+.presentation-image{
+  position: relative;
+width: 50%;
+height: auto;
+/*background-color: blue;*/
+}
+
+.presentation-img1{
+  display: flex;
+  position: absolute;
+  right: 0px;
+  width: 70%;
+  height: 80%;
+  background-color: white;
+  align-content:space-around;
+  align-items: center;
+  justify-content: center;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+
+
+}
+
+.presentation-img1 img, .presentation-img2 img{
+  width: 95%;
+  height: 95%;
+  object-fit: cover;
+}
+
+.presentation-img2{
+  display: flex;
+  position: absolute;
+  left: 0px;
+  bottom: 0px;
+  width: 50%;
+  height: 50%;
+  background-color: white;
+  align-content:space-around;
+  align-items: center;
+  justify-content: center;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+}
+/*
+.presentation-image img{
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
+  border-radius: 5px;
+}
+*/
 /* vignettes villas */
 #vignette-container{
   display: flex;
@@ -1047,4 +1243,25 @@ textarea {
   .card__images {
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   }
+}
+
+
+/* animation autoshow */
+
+.autoshow{
+  animation: autoShowAnimation;
+  animation-timeline: view();
+}
+
+@keyframes autoShowAnimation{
+  from{
+    opacity: 0;
+    transform: translateY(200px) scale(0.3);
+
+  }
+  to{
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+
 }
