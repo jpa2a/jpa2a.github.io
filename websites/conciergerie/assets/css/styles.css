@@ -109,7 +109,9 @@ height: 70vh;
 */
 .services{
   color: #333;
-  background-color:rgba(219, 172, 52, 0.75);
+ /* background-color:rgba(219, 172, 52, 0.75);*/
+ /*background-color: #A58560;*/
+ background-color: #c4a582;
 }
 .services-container{
   display: flex;
