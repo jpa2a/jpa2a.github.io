@@ -670,7 +670,8 @@ footer{
   position: absolute;
   top: 0;
   left: 0;
-  background-color: rgba(219, 172, 52, 0.75);
+  /*background-color: rgba(219, 172, 52, 0.75);*/
+  background-color: #eccc95;
  /* border-radius: 0.5rem;*/
   transition: transform 0.3s ease, width 0.3s ease, height 0.3s ease;
   z-index: 0;
@@ -959,7 +960,8 @@ textarea {
 }
 
 #form_button {
-   background-color: rgba(219, 172, 52, 0.75);
+  background-color: #eccc95;
+  /* background-color: rgba(219, 172, 52, 0.75);*/
   border: solid 2px #474544;
   color: #474544;
   cursor: pointer;
