@@ -111,7 +111,22 @@ height: 70vh;
   color: #333;
  /* background-color:rgba(219, 172, 52, 0.75);*/
  /*background-color: #A58560;*/
- background-color: #c4a582;
+ /* background-color: #c4a582;*/
+ /*background-color: #d7c69d;*/
+/*background: #C39860;
+background: -webkit-linear-gradient(162deg,rgba(195, 152, 96, 1) 0%, rgba(233, 201, 145, 1) 50%, rgba(195, 152, 96, 1) 100%);
+background: -moz-linear-gradient(162deg,rgba(195, 152, 96, 1) 0%, rgba(233, 201, 145, 1) 50%, rgba(195, 152, 96, 1) 100%);
+background: linear-gradient(162deg,rgba(195, 152, 96, 1) 0%, rgba(233, 201, 145, 1) 50%, rgba(195, 152, 96, 1) 100%);*/
+/*
+background: #E9C992;
+background: radial-gradient(circle,rgba(233, 201, 146, 1) 0%, rgba(195, 153, 96, 1) 100%);
+*/
+/*
+background: #C39860;
+background: linear-gradient(185deg, rgba(195, 152, 96, 1) 24%, rgba(236, 204, 149, 1) 47%, rgba(233, 201, 146, 1) 58%, rgba(209, 171, 115, 1) 100%, rgba(195, 152, 96, 1) 79%);
+*/
+background: #C39860;
+background: linear-gradient(194deg, rgba(195, 152, 96, 1) 8%, rgba(236, 204, 149, 1) 38%, rgba(233, 201, 146, 1) 62%, rgba(195, 152, 96, 1) 88%);
 }
 .services-container{
   display: flex;
