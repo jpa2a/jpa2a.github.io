@@ -151,9 +151,14 @@ background: linear-gradient(194deg, rgba(195, 152, 96, 1) 8%, rgba(236, 204, 149
 }
 
 .services-cont-text{
-  width: 50%;
+  width: 480px;
   margin-left: 50px;
-  padding-right: 250px;
+ /* padding-right: 250px;*/
+ margin-right: auto;
+ font-size: 1rem;
+ text-size-adjust: auto;
+ word-spacing: 2px;
+ /*white-space: pre-wrap;*/
 }
 
 .services-cont-title{
@@ -190,7 +195,7 @@ background: linear-gradient(194deg, rgba(195, 152, 96, 1) 8%, rgba(236, 204, 149
 
 .service-card{
   /*background-color: #282E34;*/
-  background-color: white;
+  background-color: #eccc95;
   display: flex;
   flex-direction: column;
 
