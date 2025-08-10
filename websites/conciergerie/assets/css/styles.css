@@ -69,9 +69,13 @@ body {
   flex-direction: column;
   justify-content:space-between;
   padding-top: 3rem;
-  overflow-x: hidden;
+
  
  
+}
+
+.overf{
+    overflow-x: hidden;
 }
 
 ul {
