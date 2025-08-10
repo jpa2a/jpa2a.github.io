@@ -15,6 +15,8 @@
     }
     @media only screen and (max-width: 1024px) {
         .contact-wrapper {
+            margin-inline: 15px;
+            margin-bottom: 20px;
             margin-top: 100px;
             flex-direction: column;
             padding: 0;
