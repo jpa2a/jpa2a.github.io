@@ -13,6 +13,15 @@
         display: flex;
         
     }
+    @media only screen and (max-width: 1024px) {
+        .contact-wrapper {
+            margin-top: 100px;
+            flex-direction: column;
+            padding: 0;
+            height: 800px;
+            
+        }
+}
 
     .contact-text{
     margin: 85px auto;
@@ -23,6 +32,18 @@
     border-top-left-radius: 10px;
     border-bottom-left-radius: 10px;
     }
+        @media only screen and (max-width: 1024px) {
+        .contact-text {
+            margin: 0;
+            margin-top: auto;
+            padding-bottom: 30px;
+            border-bottom-left-radius: 0px;
+             border-bottom-left-radius: 0px;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+            
+        }
+}
 /*
 @import url(https://fonts.googleapis.com/css?family=Montserrat:400,700);
 
@@ -65,9 +86,20 @@ textarea {
   padding-left: 0;
   position: relative;
   margin-left: 0;
-  border-bottom-right-radius: 5px;
-  border-top-right-radius: 5px;
+
 }
+
+     @media only screen and (max-width: 1024px) {
+        #container {
+            margin: 0;
+            margin-bottom: 500px;
+            width: 100%;
+            height: 100%;
+            max-width: 1000px;
+        }
+    }
+
+
 
 form {
   padding: 25px;
@@ -80,10 +112,37 @@ background: linear-gradient(194deg, rgba(195, 152, 96, 1) 8%, rgba(236, 204, 149
   border-bottom-right-radius: 5px;
   border-top-right-radius: 5px;
 }
+
+   @media only screen and (max-width: 1024px) {
+        form {
+           margin: 0;
+         
+           height: 500px;
+           
+        }
+    }
+
+
+
 #contact_form{
+    margin-top: 0;
     border-bottom-right-radius: 10px;
   border-top-right-radius: 10px;
 }
+
+     @media only screen and (max-width: 1024px) {
+        #contact_form {
+         
+            height: 100%;
+            border-top-left-radius: 0px;
+             border-bottom-left-radius: 10px;
+            border-bottom-left-radius: 10px;
+            border-top-right-radius: 0px;
+          
+           
+           
+        }
+    }
 
 h1 {
   color: #474544;
@@ -234,8 +293,8 @@ textarea {
 
 @media screen and (max-width: 768px) {
   #container {
-    margin: 20px auto;
-    width: 95%;
+    margin: 0 auto;
+    width: 100%;
   }
 }
 
