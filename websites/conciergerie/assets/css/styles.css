@@ -69,6 +69,7 @@ body {
   flex-direction: column;
   justify-content:space-between;
   padding-top: 3rem;
+  overflow: hidden;
  
  
 }
@@ -110,11 +111,22 @@ background: linear-gradient(194deg, rgba(195, 152, 96, 1) 8%, rgba(236, 204, 149
   display: flex;
   justify-content: center;
   align-items: center;
+  align-content: center;
 }
+
+.services-wrapper{
+    padding:50px 80px;
+    display: flex;
+    justify-content: center;
+  }
 
 @media only screen and (max-width: 1024px) {
   .services-container {
     flex-direction: column;
+    width: 80%;
+  }
+  .services-wrapper{
+    padding:50px 0;
   }
 }
 
@@ -201,7 +213,7 @@ background: linear-gradient(194deg, rgba(195, 152, 96, 1) 8%, rgba(236, 204, 149
 }
 @media only screen and (max-width: 768px) {
   .nosservices-wrapper {
-    padding:50px 120px;
+    padding:50px 20px;
   }
 }
 
@@ -527,7 +539,9 @@ footer{
 @media only screen and (max-width: 1024px) {
   .presentation {
     flex-direction: column-reverse;
-    padding:50px 30px;
+    justify-content: center;
+    text-align: center;
+    padding:50px 20px;
   }
 }
 
@@ -542,7 +556,8 @@ width: 50%;
 @media only screen and (max-width: 1024px) {
   .presentation-text {
     padding-right: 0;
-    width: 80%;
+    margin-right: 0;
+    width: 100%;
   }
 }
 
@@ -562,6 +577,7 @@ height: auto;
   .presentation-image {
     flex-direction: column;
     height: 300px;
+    width: 100%;
     margin-bottom: 30px;
   }
 }

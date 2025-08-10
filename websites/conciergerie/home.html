@@ -90,9 +90,26 @@ h3 {
   margin-right: 30px;
 }
 
+@media only screen and (max-width: 460px) {
+    .img-logo{
+      width: 350px;
+      height: auto;
+      margin-inline: 50px;
+      
+    }
+}
+
+
 .img-logo img{
   height: 100%;
   width: auto;
+}
+@media only screen and (max-width: 460px) {
+    .img-logo img{
+      width: 100%;
+      height: auto;
+      
+    }
 }
 
 .hero-text{
@@ -113,7 +130,8 @@ h3 {
 }
 
 .line{
-  font-size: clamp(1rem, 2vw, 1.6rem);
+  font-size: clamp(0.8rem, 2vw, 1.6rem);
+  letter-spacing: clamp(5px, 0.3rem, 10px);
 }
 
 /* Turn off parallax scrolling for tablets and phones */
@@ -196,7 +214,7 @@ h3 {
 
 
 <div class="services" style="position:relative;">
-  <div style="text-align:center;padding:50px 80px;text-align: justify;">
+  <div class="services-wrapper" style="text-align:center;text-align: justify;">
   
     <div class="services-container">
       <div class="services-cont-img fade-inX"><img src="assets/images/Gmail/1000010458.png"  /></div>
