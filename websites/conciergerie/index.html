@@ -73,23 +73,39 @@
        <div id="page"></div>
       </main>
       <footer>
-         <div class="nav__social">
-                  <a href="https://www.instagram.com/" target="_blank" class="nav__social-link">
-                     <i class="fa-brands fa-instagram"></i>
-                  </a>
+         <div class="foo-wrapper">
+            <div class="nav__social">
+                     <a href="https://www.instagram.com/" target="_blank" class="nav__social-link">
+                        <i class="fa-brands fa-instagram"></i>
+                     </a>
 
-                  <a href="https://www.facebook.com/" target="_blank" class="nav__social-link">
-                     <i class="fa-brands fa-facebook"></i>
-                  </a>
+                     <a href="https://www.facebook.com/" target="_blank" class="nav__social-link">
+                        <i class="fa-brands fa-facebook"></i>
+                     </a>
 
-                  <a href="https://x.com/" target="_blank" class="nav__social-link">
-                     <i class="fa-brands fa-twitter"></i>
-                  </a>
+                     <a href="https://x.com/" target="_blank" class="nav__social-link">
+                        <i class="fa-brands fa-twitter"></i>
+                     </a>
 
-                  <a href="https://www.linkedin.com/" target="_blank" class="nav__social-link">
-                     <i class="fa-brands fa-linkedin"></i>
-                  </a>
-               </div>
+                     <a href="https://www.linkedin.com/" target="_blank" class="nav__social-link">
+                        <i class="fa-brands fa-linkedin"></i>
+                     </a>
+            </div>
+            <div class="foo-nav">
+               <h4>navigation</h4>
+               <a   href="?page=home" data-page="home" onclick="content('home'); return false;">Accueil</a>
+               <a   href="?page=services" data-page="services" onclick="content('services'); return false;">Qui sommes nous</a>
+               <a  href="?page=contact" data-page="contact" onclick="content('contact'); return false;">Contact</a>
+            </div>
+            <div class="foo-cont">
+               <h4>contact</h4>
+               <p>Email :</p>
+               <a>email@gmail.com</a>
+               <p>Telephone :</p>
+               <a>+33645784125</a>
+            </div>
+         </div>
+         <div class="legal">Copyright ©2025 All rights reserved.</div>
       </footer>
       <!--=============== MAIN JS ===============-->
       <script src="assets/js/main.js"></script>
