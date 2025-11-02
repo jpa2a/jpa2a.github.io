@@ -32,7 +32,8 @@
   --blanc2: #06070a;
   --gris: #d6d7d7;
   /*--orange: #ea5c1f;*/
-  --orange: #ff7b00;
+ /* --orange: #ff7b00;*/
+  --orange: #41a1dd;
   /*--bleuc: #4f5d75;*/
   --bleuc: #d4d4d4;
   /*--bleuf: #212431;*/
@@ -816,3 +817,31 @@ footer{
     margin-bottom: 30px;
    
 }
+
+.foot-services{
+    color: var(--orange);
+    font-size: 1.2rem;
+     text-shadow: 1px 1px 6px #000000;
+}
+
+.foot-tech{
+    color: var(--bleuc);
+    font-size: 1.2rem;
+     text-shadow: 1px 1px 6px #000000;
+}
+
+
+.foot-news{
+    color: var(--orange);
+    font-size: 1.2rem;
+}
+
+.foot h5{
+    color: var(--blanc);
+    font-family: "Poppins";
+    font-size: 1.6rem;
+    font-weight: 200;
+    letter-spacing: 0.5rem;
+}
+
+
