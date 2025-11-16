@@ -169,9 +169,136 @@ gsap.from(contact, {
        scrub : 2, 
   }
 })
+/*
+
+const band = document.querySelectorAll(".bandeau")
+
+gsap.from(band, {
+  xPercent : 100,
+  ease: "power2.out",
+  duration: 3,
+    repeat: 0,
+  yoyo: true,
+
+})*/
+/*
+gsap.from(".bandeau svg", { y: 100, opacity: 0, duration: 1 });
+
+*/
+/*
+gsap.from(".bandeau svg", {
+  xPercent: 100,
+  opacity: 0,
+  duration: 3,
+  ease: "power2.out"
+});
+
+gsap.from(".bandeau", {
+  x: 500, // absolute pixel movement
+  duration: 3,
+  ease: "power2.out"
+});
+*/
+const band2 = document.querySelector(".bandeau svg"); // target the SVG
+
+gsap.from(band2, {
+  xPercent: -50,
+  duration: 8,
+  repeat: 1000,
+  yoyo: true,
+  ease: "power2.out",
+});
+/*
+gsap.to(band2, {
+  xPercent: 0,
+  duration: 8,
+  repeat: 1000,
+  yoyo: true
+});
+*/
+/*
+gsap.to(".bandeau", {
+  backgroundColor: "#000",
+  onUpdate() {
+    const bg = getComputedStyle(document.querySelector(".bandeau")).backgroundColor;
+    const lum = getLuminance(bg);
+    gsap.to(".bandeau svg", { stroke: lum > 0.5 ? "#000" : "#fff", duration: 0.3 });
+  }
+});
+*/
+/*
+function getLuminance(rgb) {
+  const [r, g, b] = rgb.match(/\d+/g).map(Number);
+  // sRGB to linear
+  const a = [r, g, b].map(v => {
+    v /= 255;
+    return v <= 0.03928 ? v / 12.92 : Math.pow((v + 0.055) / 1.055, 2.4);
+  });
+  // relative luminance
+  return 0.2126 * a[0] + 0.7152 * a[1] + 0.0722 * a[2];
+}
+
+document.querySelectorAll(".bandeau").forEach(band => {
+  const bg = getComputedStyle(band).backgroundColor;
+  const lum = getLuminance(bg);
+  const svg = band.querySelector("svg");
+  // choose black or white based on brightness
+  svg.style.stroke = lum > 0.5 ? "#000" : "#fff";
+});
+
+*/
 
 
+function luminanceFromRGBString(rgb) {
+  // rgb may be "rgb(255, 255, 255)" or "rgba(...)"
+  const m = rgb.match(/\d+/g);
+  if (!m) return 1;
+  const [r,g,b] = m.slice(0,3).map(n => Number(n)/255);
+  const a = [r,g,b].map(v => v <= 0.03928 ? v/12.92 : Math.pow((v+0.055)/1.055, 2.4));
+  return 0.2126*a[0] + 0.7152*a[1] + 0.0722*a[2];
+}
+
+function adaptStrokeToBg(el) {
+  const bg = getComputedStyle(el).backgroundColor;
+  const lum = luminanceFromRGBString(bg);
+  const strokeColor = lum > 0.9 ? '#f2fa08ff' : '#f8710aff';
+  // either set color so stroke=currentColor works:
+  el.style.color = strokeColor;
+  // or directly set stroke on the svg paths:
+  const svg = el.querySelector('svg');
+  if (svg) svg.querySelectorAll('*').forEach(node => node.style.stroke = strokeColor);
+}
+
+// usage:
+document.querySelectorAll('.bandeau').forEach(adaptStrokeToBg);
 
 
+/* lenis */
 
+// Initialize a new Lenis instance for smooth scrolling
+const lenis = new Lenis();
+
+// Synchronize Lenis scrolling with GSAP's ScrollTrigger plugin
+lenis.on('scroll', ScrollTrigger.update);
+
+// Add Lenis's requestAnimationFrame (raf) method to GSAP's ticker
+// This ensures Lenis's smooth scroll animation updates on each GSAP tick
+gsap.ticker.add((time) => {
+  lenis.raf(time * 1000); // Convert time from seconds to milliseconds
+});
+
+// Disable lag smoothing in GSAP to prevent any delay in scroll animations
+gsap.ticker.lagSmoothing(0);
+
+
+const cache = document.querySelectorAll(".ssections_0")
+
+gsap.to(cache, {
+  xPercent : 80,
+  ease: "power2.out",
+  duration: 5,
+    repeat: 0,
+  yoyo: true,
+
+})
 

@@ -1,0 +1,241 @@
+<!-- 3D Screenshot Stack
+     Single-file example: copy-paste into an HTML file and replace the image src attributes
+     - Put your screenshots in the <div class="stack"> as <div class="card" style="--i:0"><img src="..."></div>
+     - Adjust --angle and --gap in :root or via the UI controls below
+-->
+
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>3D Screenshot Stack</title>
+<style>
+  :root{
+    --angle: 45deg;         /* rotation angle */
+    --gap: 60px;            /* distance between cards (z-axis) */
+    --card-w: 360px;        /* card width */
+    --card-h: 640px;        /* card height */
+    --stack-tilt: 8deg;     /* subtle tilt on hover */
+    --shadow-opacity: 0.18; /* shadow darkness */
+  }
+  *{box-sizing:border-box}
+  body{
+    font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+    background: linear-gradient(180deg,#0f172a 0%, #071129 100%);
+    color:#fff;
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:32px;
+  }
+
+  .wrap{
+    max-width:1200px;
+    width:100%;
+    display:grid;
+    grid-template-columns: 1fr 480px;
+    gap:40px;
+    align-items:center;
+  }
+
+  .preview-aria{
+    perspective: 1400px; /* controls strength of 3D */
+    perspective-origin: 50% 40%;
+  }
+
+  .stack{
+    width:100%;
+    height:var(--card-h);
+    position:relative;
+    transform-style:preserve-3d;
+    transform: translateZ(0);
+    margin:auto;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+
+  .card{
+    --i: 0; /* index (0 for back-most) */
+    position:absolute;
+    left:50%;
+    top:50%;
+    width:var(--card-w);
+    height:var(--card-h);
+    transform-style:preserve-3d;
+    transform: translate(-50%,-50%) rotateY(var(--angle)) translateZ(calc(var(--i) * var(--gap))) ;
+    border-radius:14px;
+    overflow:hidden;
+    box-shadow: 0 20px 40px rgba(2,6,23,var(--shadow-opacity));
+    transition: transform 450ms cubic-bezier(.22,.9,.25,1), box-shadow 300ms;
+    background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.06));
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+  }
+
+  .card img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
+    transform: translateZ(20px) scale(1.03); /* subtle pop-out */
+  }
+
+  /* subtle staggered offset so cards don't exactly overlap horizontally */
+  .card:nth-child(odd){
+    transform: translate(-48%,-50%) rotateY(var(--angle)) translateZ(calc(var(--i) * var(--gap)));
+  }
+
+  /* hover interaction on the whole stack: spread cards and tilt slightly toward the pointer */
+  .preview-aria:hover .card{
+    transition: transform 300ms cubic-bezier(.2,.9,.25,1), box-shadow 300ms;
+    box-shadow: 0 34px 60px rgba(2,6,23,0.28);
+  }
+
+  /* give a bit more separation while hovered */
+  .preview-aria:hover .card{
+    transform: translate(-50%,-50%) rotateY(var(--angle)) translateZ(calc(var(--i) * calc(var(--gap) + 10px)));
+  }
+
+  /* active (mouse down) - deeper pop */
+  .preview-aria:active .card{
+    transform: translate(-50%,-50%) rotateY(calc(var(--angle) - 2deg)) translateZ(calc(var(--i) * calc(var(--gap) + 18px)));
+  }
+
+  /* responsiveness: disable 3D on small screens */
+  @media (max-width:800px){
+    .wrap{grid-template-columns:1fr}
+    .stack{height:420px}
+    .card{position:relative; left:auto; top:auto; transform:none; width:90%; margin:0 auto  -120px;}
+    .card img{transform:none}
+    .preview-aria{perspective: none}
+  }
+
+  /* controls column */
+  .controls{
+    background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(0,0,0,0.06));
+    border-radius:12px;
+    padding:20px;
+    box-shadow: 0 10px 30px rgba(2,6,23,0.25);
+  }
+  .controls h3{margin:0 0 12px 0; font-size:16px}
+  .control{margin-bottom:12px}
+  label{display:block; font-size:13px; opacity:0.85; margin-bottom:6px}
+  input[type=range]{width:100%}
+  .note{font-size:13px; opacity:0.8}
+
+  /* small visual hint for layering order */
+  .legend{display:flex; gap:8px; align-items:center; margin-top:8px}
+  .chip{padding:6px 8px; background:rgba(255,255,255,0.03); border-radius:8px; font-size:13px}
+
+</style>
+</head>
+<body>
+  <div class="wrap">
+
+    <div>
+      <div class="preview-aria" id="preview">
+        <div class="stack" id="stack">
+          <!-- Replace src with your screenshots. The --i value is the index (0 is back-most). -->
+          <div class="card" style="--i:0"><img src="https://images.unsplash.com/photo-1522202195465-6d5f1f0b6e33?q=80&w=1200&auto=format&fit=crop&s=1" alt="screenshot 1"></div>
+          <div class="card" style="--i:1"><img src="https://images.unsplash.com/photo-1515879218367-8466d910aaa4?q=80&w=1200&auto=format&fit=crop&s=2" alt="screenshot 2"></div>
+          <div class="card" style="--i:2"><img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=1200&auto=format&fit=crop&s=3" alt="screenshot 3"></div>
+          <div class="card" style="--i:3"><img src="https://images.unsplash.com/photo-1508385082359-fc9adfb8c3f8?q=80&w=1200&auto=format&fit=crop&s=4" alt="screenshot 4"></div>
+        </div>
+      </div>
+    </div>
+
+    <aside class="controls" aria-label="3D controls">
+      <h3>3D Stack controls</h3>
+
+      <div class="control">
+        <label for="angle">Angle (deg): <span id="angleVal">45</span>°</label>
+        <input id="angle" type="range" min="-60" max="60" value="45">
+      </div>
+
+      <div class="control">
+        <label for="gap">Depth gap (px): <span id="gapVal">60</span>px</label>
+        <input id="gap" type="range" min="10" max="180" value="60">
+      </div>
+
+      <div class="control">
+        <label for="persp">Perspective (px): <span id="perspVal">1400</span></label>
+        <input id="persp" type="range" min="400" max="2600" value="1400">
+      </div>
+
+      <div class="control note">
+        Replace the sample image links with your screenshots. For best results use identical sizes and high-resolution images.
+      </div>
+
+      <div class="legend">
+        <div class="chip">Back</div>
+        <div class="chip">Middle</div>
+        <div class="chip">Front</div>
+      </div>
+
+    </aside>
+
+  </div>
+
+<script>
+  // Controls wiring
+  const angleRange = document.getElementById('angle');
+  const gapRange = document.getElementById('gap');
+  const perspRange = document.getElementById('persp');
+  const angleVal = document.getElementById('angleVal');
+  const gapVal = document.getElementById('gapVal');
+  const perspVal = document.getElementById('perspVal');
+  const preview = document.getElementById('preview');
+  const stack = document.getElementById('stack');
+
+  function updateCSS(){
+    document.documentElement.style.setProperty('--angle', angleRange.value + 'deg');
+    document.documentElement.style.setProperty('--gap', gapRange.value + 'px');
+    preview.style.perspective = perspRange.value + 'px';
+    angleVal.textContent = angleRange.value;
+    gapVal.textContent = gapRange.value;
+    perspVal.textContent = perspRange.value;
+  }
+  angleRange.addEventListener('input', updateCSS);
+  gapRange.addEventListener('input', updateCSS);
+  perspRange.addEventListener('input', updateCSS);
+  updateCSS();
+
+  // Pointer-based subtle tilt
+  preview.addEventListener('pointermove', (e)=>{
+    const rect = preview.getBoundingClientRect();
+    const x = (e.clientX - rect.left) / rect.width; // 0 - 1
+    const y = (e.clientY - rect.top) / rect.height; // 0 - 1
+    const rx = (y - 0.5) * 12; // tilt x
+    const ry = (x - 0.5) * -18; // tilt y
+    stack.style.transform = `rotateX(${rx}deg) rotateY(${ry}deg)`;
+    // parallax each card slightly differently
+    const cards = stack.children;
+    for(let i=0;i<cards.length;i++){
+      const depthFactor = (i+1)/cards.length;
+      const dx = (x - 0.5) * depthFactor * 18;
+      const dy = (y - 0.5) * depthFactor * 10;
+      // apply extra translate to create layered parallax
+      cards[i].style.transform = `translate(-50%,-50%) rotateY(var(--angle)) translateZ(calc(var(--i) * var(--gap))) translate3d(${dx}px, ${dy}px, 0)`;
+    }
+  });
+
+  preview.addEventListener('pointerleave', ()=>{
+    stack.style.transform = '';
+    // reset card transforms to base
+    const cards = stack.children;
+    for(let i=0;i<cards.length;i++){
+      cards[i].style.transform = '';
+    }
+  });
+
+  // Accessibility: keyboard focus => slightly elevate
+  stack.addEventListener('focusin', ()=> stack.classList.add('focused'));
+  stack.addEventListener('focusout', ()=> stack.classList.remove('focused'));
+
+</script>
+
+</body>
+</html>
