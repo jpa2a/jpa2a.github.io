@@ -129,7 +129,7 @@
         
         margin: 0;
         font-size: 1.4rem;
-        font-weight: 300;
+        font-weight: 400;
         text-align: left;
         line-height: 120%;
     }
@@ -235,6 +235,10 @@
     .services{
         padding-top: 110px;
         height: 100vh;
+       
+        overflow: hidden;
+    
+        
     }
     .vignettes{
       display:grid;
@@ -274,10 +278,13 @@
       padding-right:12px;
     }
     .trust{
-        height: 100vh;
+        min-height: 500vh;
+        overflow: hidden;
     }
     .faq{
         height: 100vh;
+        
+        overflow: hidden;
     }
 
     .left{
@@ -464,28 +471,28 @@
         <div class="right">
           <div class="vignettes" role="list">
             <div class="vignette" role="listitem" style="transform-style: preserve-3d"  data-tilt>
-              <h4  style="transform: translateZ(20px)">Brand Strategy</h4>
-              <p   style="transform: translateZ(20px)">Positioning, messaging and naming to make you memorable.</p>
+              <h4  style="transform: translateZ(20px)">Branding</h4>
+              <p   style="transform: translateZ(20px)">Creation de Palettes couleur, logos et selection de typographie représentant au mieux votre marque.</p>
             </div>
             <div class="vignette" role="listitem" style="transform-style: preserve-3d"  data-tilt>
               <h4  style="transform: translateZ(20px)">UI / UX Design</h4>
-              <p  style="transform: translateZ(20px)">Interfaces that feel simple and behave reliably.</p>
+              <p  style="transform: translateZ(20px)">Un design se doit d'etre accrocheur mais egalement clair et intuitif. nous pouvons vous aider a offrir la meilleur experience possible a vos utilisateurs.</p>
             </div>
             <div class="vignette" role="listitem" style="transform-style: preserve-3d"  data-tilt>
               <h4  style="transform: translateZ(20px)">Developpement</h4>
-              <p  style="transform: translateZ(20px)">Fast, accessible websites and progressive web apps.</p>
+              <p  style="transform: translateZ(20px)">conception de base de données,creation de sites avec base de données type eCommerce, creation d'applications personnalisés.</p>
             </div>
             <div class="vignette" role="listitem" style="transform-style: preserve-3d"  data-tilt>
-              <h4  style="transform: translateZ(20px)">Product Discovery</h4>
-              <p  style="transform: translateZ(20px)">Research, prototyping and user testing to reduce risk.</p>
+              <h4  style="transform: translateZ(20px)">eCommerce</h4>
+              <p  style="transform: translateZ(20px)">Création de site eCommerce avec gestion de panier et paiements en ligne.</p>
             </div>
             <div class="vignette" role="listitem" style="transform-style: preserve-3d"  data-tilt>
-              <h4  style="transform: translateZ(20px)">Content Creation</h4>
-              <p  style="transform: translateZ(20px)">Copywriting, motion and visual assets for campaigns.</p>
+              <h4  style="transform: translateZ(20px)">Maintenance</h4>
+              <p  style="transform: translateZ(20px)">Hébergement, mise a jour des serveurs, sauvegardes.</p>
             </div>
             <div class="vignette" role="listitem" style="transform-style: preserve-3d"  data-tilt>
-              <h4  style="transform: translateZ(20px)">Analytics & Growth</h4>
-              <p  style="transform: translateZ(20px)">Tracking, experiments and optimization for measurable growth.</p>
+              <h4  style="transform: translateZ(20px)">SEO</h4>
+              <p  style="transform: translateZ(20px)">Optimisations permettant d'optimiser au maximum le référencement aupres des moteurs de recherche tel que google.</p>
             </div>
           </div>
         </div>
@@ -498,29 +505,26 @@
       
         <div class="left">
           <div class="trust-list tl1" aria-label="Reasons to trust">
-            <li>Proven track record across multiple industries and scales.</li>
-            <li>Transparent process with clear milestones and reporting.</li>
-            <li>Long-term partnerships beyond one-off projects.</li>
+            <h3>Solutions creatives et sur mesure</h3>
+            <p>Nous prenons le temps de bien comprendre vos besoins afin de vous apporté la solution la plus adapté.</p>
           </div>
-          <ul class="trust-list tl2" aria-label="Reasons to trust">
-            <li>Proven track record across multiple industries and scales.</li>
-            <li>Transparent process with clear milestones and reporting.</li>
-            <li>Long-term partnerships beyond one-off projects.</li>
-          </ul>
-          <ul class="trust-list tl3" aria-label="Reasons to trust">
-            <li>Proven track record across multiple industries and scales.</li>
-            <li>Transparent process with clear milestones and reporting.</li>
-            <li>Long-term partnerships beyond one-off projects.</li>
-          </ul>
-          <ul class="trust-list tl4" aria-label="Reasons to trust">
-            <li>Proven track record across multiple industries and scales.</li>
-            <li>Transparent process with clear milestones and reporting.</li>
-            <li>Long-term partnerships beyond one-off projects.</li>
-          </ul>
+          <div class="trust-list tl2" aria-label="Reasons to trust">
+            <h3>Optimisation SEO</h3>
+                <p>Un site beau, rapide et bien référencé.
+Nous concevons des sites web optimisés pour le SEO afin d’augmenter votre trafic et vos ventes.</p>
+          </div>
+          <div class="trust-list tl3" aria-label="Reasons to trust">
+            <h3>Processus transparent</h3>
+                <p>Déroulement des projets par étapes avec validation du client a chaque étape</p>
+          </div>
+          <div class="trust-list tl4" aria-label="Reasons to trust">
+            <h3>Des packs tout-en-un, simples et avantageux.</h3>
+                <p>Profitez d’un site web complet avec hébergement inclus, sans frais cachés ni complications.</p>
+          </div>
         </div>
           <div class="tight">
           <h2 id="trust-title" class="section-title split inv">Pourquoi nous faire confiance</h2>
-          <p class="lead split2 inv">We don't promise miracles — we deliver predictable outcomes.</p>
+          <p class="lead split2 inv">Helena — espece de sorciere !!!</p>
         </div>
       </div>
     </section>
@@ -531,39 +535,39 @@
     <section id="faq" class="faq wrap" aria-labelledby="faq-title">
       <div class="section-grid">
         <div class="left">
-          <h2 id="faq-title" class="section-title split2">frequently asked questions</h2>
-          <p class="lead split2">Answers to common questions about scope, timelines and pricing.</p>
+          <h2 id="faq-title" class="section-title split2">foire aux questions</h2>
+          <p class="lead split2">Questions frequentes</p>
         </div>
 
         <div class="right">
           <div class="accordion" id="accordion">
             <article class="accordion-item">
               <div class="acc-trigger" aria-expanded="false" tabindex="0">
-                <h5>Combien de temps faut-il compter par projet ?</h5>
+                <h5>Combien de temps faut-il compter pour réaliser un site web ?</h5>
                 <div class="acc-icon">+</div>
               </div>
               <div class="acc-content">
-                <p>Project timelines vary — discovery and planning typically take 2–4 weeks, while delivery depends on scope. We provide a detailed timeline during onboarding.</p>
+                <p>Cela depend des sites, pour un site vitrine il faut compter dans les 3 semaines, pour un eCommerce plutot 5 semaines.</p>
               </div>
             </article>
 
             <article class="accordion-item">
               <div class="acc-trigger" aria-expanded="false" tabindex="0">
-                <h5>What is your pricing model?</h5>
+                <h5>Quel est le prix pour un site web ?</h5>
                 <div class="acc-icon">+</div>
               </div>
               <div class="acc-content">
-                <p>We offer fixed-price engagements for well-scoped work and time-and-materials for exploratory or open-ended projects. Each proposal is tailored to client needs.</p>
+                <p>Nous ne faisons pas payer les sites que nous créons, par contre vous devez vous engager a payer l'hebergement sur nos serveurs de votre site pendant 2 ans. avec des abonnements qui demarrent a 50 euros par mois.</p>
               </div>
             </article>
 
             <article class="accordion-item">
               <div class="acc-trigger" aria-expanded="false" tabindex="0">
-                <h5>Do you offer post-launch support?</h5>
+                <h5>quel est le montant mensuel pour l'hébergement d'un site web ?</h5>
                 <div class="acc-icon">+</div>
               </div>
               <div class="acc-content">
-                <p>Yes. We provide maintenance plans, performance monitoring, and iterative improvements after launch to ensure your product keeps delivering value.</p>
+                <p>Cela depend du type de site web et si le client desire que l'on s'occupe du SEO, un site vitre sans SEO compter 50 euros par mois. un site eCommerce avec SEO minimum 250 euros par mois.</p>
               </div>
             </article>
           </div>
@@ -712,18 +716,18 @@
 
         // Basic validation
         if (!name || !email || !message){
-          showStatus('Please complete all fields.', true);
+          showStatus('Completez tous les champs !!!', true);
           return;
         }
         // Basic email pattern
         const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         if (!emailPattern.test(email)){
-          showStatus('Please enter a valid email address.', true);
+          showStatus('entrez une adresse email valide !!!', true);
           return;
         }
 
         // Simulate sending
-        showStatus('Sending…');
+        showStatus('Envoi…');
         const btn = form.querySelector('button[type="submit"]');
         btn.disabled = true;
         btn.style.opacity = '0.6';
@@ -733,7 +737,7 @@
           btn.disabled = false;
           btn.style.opacity = '1';
           form.reset();
-          showStatus('Thanks — your message has been sent.');
+          showStatus('Message envoyer !!!');
         }, 900);
       });
     })();
@@ -824,7 +828,7 @@ document.addEventListener("DOMContentLoaded", () =>  {
         scrollTrigger: {
             trigger:".services",
             start: "top 80%",
-            end: "bottom bottom",
+            end: "80% bottom",
             scrub: 0.5,
             invalidateOnRefresh: true,
             markers: false,
@@ -848,10 +852,10 @@ document.addEventListener("DOMContentLoaded", () =>  {
         scrollTrigger: {
             trigger:".faq",
             start: "top 80%",
-            end: "bottom bottom",
+            end: "70% bottom",
             scrub: 0.5,
             invalidateOnRefresh: true,
-            markers: false,
+            markers: true,
         },   
     })
     .fromTo(
@@ -872,11 +876,12 @@ document.addEventListener("DOMContentLoaded", () =>  {
         scrollTrigger: {
             trigger:".trust",
             start: "top 30%",
-            end: "bottom+=2000px bottom",
+            end: "bottom bottom",
             scrub: 1,
             invalidateOnRefresh: true,
-            markers: true,
+            markers: false,
             pin: true,
+            pinSpacing: false,
         },   
     })
     .fromTo(
@@ -970,9 +975,7 @@ document.addEventListener("DOMContentLoaded", () =>  {
             {
                 autoAlpha:1, x:0, stagger: 0.2
             },
-            {
-                autoAlpha:1, x:-800, stagger: 0.2
-            },
+        
 
         )
         ;
