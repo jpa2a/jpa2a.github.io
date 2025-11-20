@@ -302,3 +302,48 @@ gsap.to(cache, {
 
 })
 
+
+/* logo */
+const tl = gsap.timeline({
+  scrollTrigger: {
+    trigger: ".content",
+    start: "top top",
+    end: "bottom bottom",
+    scrub: true
+  }
+});
+
+/* LOGO FADE-IN + VERTICAL PARALLAX + SMALL DELAY */
+tl.to(".background-logo", {
+  opacity: 0.26,
+  y: -28,            // elegant vertical parallax
+  scale: 1.06,
+  ease: "sine.out",
+  duration: 1
+}, 0.08)              // fade delay
+
+/* GLOW EXPANSION — deeper and smoother */
+.to(".logo-glow", {
+  opacity: 0.8,
+  scale: 2.7,
+  ease: "sine.out",
+  duration: 1
+}, 0)
+
+/* VIGNETTE FADE-IN (clean, premium) */
+.to(".vignette", {
+  opacity: 0.45,
+  duration: 1,
+  ease: "sine.out"
+}, 0.2)
+
+/* Elegant dark-warm background evolution */
+.to("body", {
+  backgroundColor: "#090503",
+}, 0.25)
+.to("body", {
+  backgroundColor: "#130a06",
+}, 0.5)
+.to("body", {
+  backgroundColor: "#1c0f08",
+}, 0.75);

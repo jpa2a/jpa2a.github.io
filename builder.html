@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Website Builder</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    .container {
+      display: flex;
+      height: 100vh;
+    }
+
+    .sidebar {
+      width: 400px;
+      border-right: 1px solid #e5e7eb;
+      overflow-y: auto;
+      background-color: #f9fafb;
+    }
+
+    .sidebar-header {
+      padding: 20px;
+      border-bottom: 1px solid #e5e7eb;
+      background: white;
+    }
+
+    .sidebar-header h1 {
+      font-size: 24px;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+
+    .tabs {
+      display: flex;
+      gap: 10px;
+    }
+
+    .tab-btn {
+      padding: 8px 16px;
+      border: 1px solid #e5e7eb;
+      border-radius: 6px;
+      cursor: pointer;
+      background: white;
+      font-size: 14px;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .tab-btn.active {
+      background: #3b82f6;
+      color: white;
+    }
+
+    .tab-content {
+      padding: 20px;
+      display: none;
+    }
+
+    .tab-content.active {
+      display: block;
+    }
+
+    .config-section {
+      margin-bottom: 30px;
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+      border: 1px solid #e5e7eb;
+    }
+
+    .config-section h3 {
+      font-size: 18px;
+      font-weight: bold;
+      margin-bottom: 15px;
+    }
+
+    .form-group {
+      margin-bottom: 15px;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 5px;
+      font-size: 14px;
+      font-weight: 500;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: 8px;
+      border: 1px solid #e5e7eb;
+      border-radius: 6px;
+      font-size: 14px;
+    }
+
+    .form-group input[type="color"] {
+      height: 40px;
+      padding: 5px;
+    }
+
+    .form-group textarea {
+      min-height: 60px;
+      resize: vertical;
+    }
+
+    .section-types {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+
+    .section-type-btn {
+      padding: 12px;
+      background: white;
+      border: 1px solid #e5e7eb;
+      border-radius: 6px;
+      cursor: pointer;
+      text-align: left;
+      font-size: 14px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .section-type-btn:hover {
+      background: #f3f4f6;
+    }
+
+    .section-item {
+      margin-bottom: 15px;
+      padding: 15px;
+      background: white;
+      border-radius: 8px;
+      border: 1px solid #e5e7eb;
+    }
+
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+
+    .section-header h4 {
+      font-size: 16px;
+      font-weight: 600;
+    }
+
+    .section-controls {
+      display: flex;
+      gap: 5px;
+    }
+
+    .icon-btn {
+      padding: 4px 8px;
+      cursor: pointer;
+      border: 1px solid #e5e7eb;
+      border-radius: 4px;
+      background: white;
+      font-size: 12px;
+    }
+
+    .icon-btn:hover {
+      background: #f3f4f6;
+    }
+
+    .icon-btn.delete {
+      color: #ef4444;
+    }
+
+    .icon-btn:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+
+    .preview {
+      flex: 1;
+      overflow-y: auto;
+      background: white;
+    }
+
+    .btn-primary {
+      width: 100%;
+      padding: 10px 20px;
+      background: #3b82f6;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 14px;
+      margin-top: 10px;
+    }
+
+    .btn-primary:hover {
+      background: #2563eb;
+    }
+
+    #codeOutput {
+      width: 100%;
+      height: 500px;
+      padding: 15px;
+      font-family: 'Courier New', monospace;
+      font-size: 12px;
+      border-radius: 6px;
+      border: 1px solid #e5e7eb;
+      background: #f9fafb;
+      resize: vertical;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="sidebar">
+      <div class="sidebar-header">
+        <h1>Website Builder</h1>
+        <div class="tabs">
+          <button class="tab-btn active" onclick="switchTab('design', event)">⚙️ Design</button>
+          <button class="tab-btn" onclick="switchTab('preview', event)">👁️ Preview</button>
+          <button class="tab-btn" onclick="switchTab('code', event)">💻 Code</button>
+        </div>
+      </div>
+
+      <div id="design" class="tab-content active">
+        <div class="config-section">
+          <h3>Navigation Bar</h3>
+          
+          <div class="form-group">
+            <label>Style</label>
+            <select id="navbarStyle" onchange="updatePreview()">
+              <option value="classic">Classic - Horizontal logo + links</option>
+              <option value="centered">Centered - Centered logo with links below</option>
+              <option value="split">Split - Logo left, links right</option>
+              <option value="minimal">Minimal - Simple text-based navigation</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>Logo Text</label>
+            <input type="text" id="navbarLogo" value="My Website" oninput="updatePreview()">
+          </div>
+
+          <div class="grid-2">
+            <div class="form-group">
+              <label>Background Color</label>
+              <input type="color" id="navbarBgColor" value="#1f2937" oninput="updatePreview()">
+            </div>
+            <div class="form-group">
+              <label>Text Color</label>
+              <input type="color" id="navbarTextColor" value="#ffffff" oninput="updatePreview()">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>Height</label>
+            <input type="text" id="navbarHeight" value="64px" oninput="updatePreview()">
+          </div>
+
+          <div class="form-group">
+            <label>Navigation Links (comma separated)</label>
+            <input type="text" id="navbarLinks" value="Home, About, Services, Contact" oninput="updatePreview()">
+          </div>
+        </div>
+
+        <div class="config-section">
+          <h3>Add Section</h3>
+          <div class="section-types">
+            <button class="section-type-btn" onclick="addSection('hero')">🎯 Hero Section</button>
+            <button class="section-type-btn" onclick="addSection('features')">⭐ Features Grid</button>
+            <button class="section-type-btn" onclick="addSection('about')">📖 About Section</button>
+            <button class="section-type-btn" onclick="addSection('gallery')">🖼️ Image Gallery</button>
+            <button class="section-type-btn" onclick="addSection('testimonials')">💬 Testimonials</button>
+            <button class="section-type-btn" onclick="addSection('cta')">📢 Call to Action</button>
+            <button class="section-type-btn" onclick="addSection('contact')">📧 Contact Form</button>
+            <button class="section-type-btn" onclick="addSection('pricing')">💰 Pricing Table</button>
+          </div>
+        </div>
+
+        <div class="config-section">
+          <h3>Sections (<span id="sectionCount">0</span>)</h3>
+          <div id="sectionsList"></div>
+        </div>
+
+        <div class="config-section">
+          <h3>Footer</h3>
+          
+          <div class="form-group">
+            <label>Style</label>
+            <select id="footerStyle" onchange="updatePreview()">
+              <option value="simple">Simple - Single line centered text</option>
+              <option value="columns">Columns - Multi-column layout</option>
+              <option value="social">Social - With social media icons</option>
+              <option value="newsletter">Newsletter - Includes email signup</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>Content</label>
+            <input type="text" id="footerContent" value="© 2025 My Website. All rights reserved." oninput="updatePreview()">
+          </div>
+
+          <div class="grid-2">
+            <div class="form-group">
+              <label>Background Color</label>
+              <input type="color" id="footerBgColor" value="#111827" oninput="updatePreview()">
+            </div>
+            <div class="form-group">
+              <label>Text Color</label>
+              <input type="color" id="footerTextColor" value="#9ca3af" oninput="updatePreview()">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>Min Height</label>
+            <input type="text" id="footerHeight" value="200px" oninput="updatePreview()">
+          </div>
+        </div>
+      </div>
+
+      <div id="code" class="tab-content">
+        <div class="config-section">
+          <h3>Generated HTML Code</h3>
+          <textarea id="codeOutput" readonly></textarea>
+          <button class="btn-primary" onclick="copyCode()">Copy to Clipboard</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="preview" class="preview"></div>
+  </div>
+
+  <script>
+    var sections = [];
+    var sectionIdCounter = 0;
+
+    function switchTab(tab, evt) {
+      var buttons = document.querySelectorAll('.tab-btn');
+      var contents = document.querySelectorAll('.tab-content');
+      
+      for (var i = 0; i < buttons.length; i++) {
+        buttons[i].classList.remove('active');
+      }
+      for (var i = 0; i < contents.length; i++) {
+        contents[i].classList.remove('active');
+      }
+      
+      evt.target.classList.add('active');
+      document.getElementById(tab).classList.add('active');
+
+      if (tab === 'code') {
+        generateCode();
+      }
+    }
+
+    function addSection(type) {
+      var section = {
+        id: sectionIdCounter++,
+        type: type,
+        title: type.charAt(0).toUpperCase() + type.slice(1) + ' Section',
+        content: 'Section content goes here...',
+        bgColor: '#ffffff',
+        textColor: '#000000',
+        padding: '80px'
+      };
+      sections.push(section);
+      renderSectionsList();
+      updatePreview();
+    }
+
+    function deleteSection(id) {
+      sections = sections.filter(function(s) { return s.id !== id; });
+      renderSectionsList();
+      updatePreview();
+    }
+
+    function moveSection(id, direction) {
+      var index = sections.findIndex(function(s) { return s.id === id; });
+      if (direction === 'up' && index > 0) {
+        var temp = sections[index];
+        sections[index] = sections[index - 1];
+        sections[index - 1] = temp;
+      } else if (direction === 'down' && index < sections.length - 1) {
+        var temp = sections[index];
+        sections[index] = sections[index + 1];
+        sections[index + 1] = temp;
+      }
+      renderSectionsList();
+      updatePreview();
+    }
+
+    function updateSectionProperty(id, property, value) {
+      var section = sections.find(function(s) { return s.id === id; });
+      if (section) {
+        section[property] = value;
+        updatePreview();
+      }
+    }
+
+    function renderSectionsList() {
+      var list = document.getElementById('sectionsList');
+      document.getElementById('sectionCount').textContent = sections.length;
+      
+      if (sections.length === 0) {
+        list.innerHTML = '<p style="color: #9ca3af; text-align: center; padding: 20px;">No sections added yet</p>';
+        return;
+      }
+
+      var html = '';
+      for (var i = 0; i < sections.length; i++) {
+        var section = sections[i];
+        var isFirst = i === 0;
+        var isLast = i === sections.length - 1;
+        
+        html += '<div class="section-item">';
+        html += '<div class="section-header">';
+        html += '<h4>Section ' + (i + 1) + ': ' + section.type + '</h4>';
+        html += '<div class="section-controls">';
+        html += '<button class="icon-btn" onclick="moveSection(' + section.id + ', \'up\')" ' + (isFirst ? 'disabled' : '') + '>↑</button>';
+        html += '<button class="icon-btn" onclick="moveSection(' + section.id + ', \'down\')" ' + (isLast ? 'disabled' : '') + '>↓</button>';
+        html += '<button class="icon-btn delete" onclick="deleteSection(' + section.id + ')">🗑️</button>';
+        html += '</div></div>';
+        
+        html += '<div class="form-group">';
+        html += '<label>Title</label>';
+        html += '<input type="text" value="' + section.title + '" oninput="updateSectionProperty(' + section.id + ', \'title\', this.value)">';
+        html += '</div>';
+
+        html += '<div class="form-group">';
+        html += '<label>Content</label>';
+        html += '<textarea oninput="updateSectionProperty(' + section.id + ', \'content\', this.value)">' + section.content + '</textarea>';
+        html += '</div>';
+
+        html += '<div class="grid-2">';
+        html += '<div class="form-group">';
+        html += '<label>Background</label>';
+        html += '<input type="color" value="' + section.bgColor + '" oninput="updateSectionProperty(' + section.id + ', \'bgColor\', this.value)">';
+        html += '</div>';
+        html += '<div class="form-group">';
+        html += '<label>Text Color</label>';
+        html += '<input type="color" value="' + section.textColor + '" oninput="updateSectionProperty(' + section.id + ', \'textColor\', this.value)">';
+        html += '</div></div>';
+
+        html += '<div class="form-group">';
+        html += '<label>Padding</label>';
+        html += '<input type="text" value="' + section.padding + '" oninput="updateSectionProperty(' + section.id + ', \'padding\', this.value)">';
+        html += '</div>';
+        
+        html += '</div>';
+      }
+      
+      list.innerHTML = html;
+    }
+
+    function renderNavbar() {
+      var style = document.getElementById('navbarStyle').value;
+      var logo = document.getElementById('navbarLogo').value;
+      var bgColor = document.getElementById('navbarBgColor').value;
+      var textColor = document.getElementById('navbarTextColor').value;
+      var height = document.getElementById('navbarHeight').value;
+      var links = document.getElementById('navbarLinks').value.split(',').map(function(l) { return l.trim(); });
+
+      var baseStyle = 'background-color: ' + bgColor + '; color: ' + textColor + '; height: ' + height + '; display: flex; align-items: center; padding: 0 40px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);';
+
+      var linkHtml = '';
+      for (var i = 0; i < links.length; i++) {
+        linkHtml += '<span style="cursor: pointer;">' + links[i] + '</span>';
+      }
+
+      if (style === 'centered') {
+        return '<nav style="' + baseStyle + ' flex-direction: column; justify-content: center; text-align: center;"><div style="font-size: 24px; font-weight: bold; margin-bottom: 10px;">' + logo + '</div><div style="display: flex; gap: 20px;">' + linkHtml + '</div></nav>';
+      } else if (style === 'minimal') {
+        var minimalLinks = '';
+        for (var i = 0; i < links.length; i++) {
+          minimalLinks += '<span style="cursor: pointer; font-size: 14px;">' + links[i] + '</span>';
+        }
+        return '<nav style="' + baseStyle + ' justify-content: center; gap: 40px;">' + minimalLinks + '</nav>';
+      } else {
+        return '<nav style="' + baseStyle + ' justify-content: space-between;"><div style="font-size: 24px; font-weight: bold;">' + logo + '</div><div style="display: flex; gap: 30px;">' + linkHtml + '</div></nav>';
+      }
+    }
+
+    function renderSection(section) {
+      var baseStyle = 'background-color: ' + section.bgColor + '; color: ' + section.textColor + '; padding: ' + section.padding + '; min-height: 200px;';
+
+      if (section.type === 'hero') {
+        return '<section style="' + baseStyle + ' text-align: center; display: flex; flex-direction: column; justify-content: center; min-height: 400px;"><h1 style="font-size: 48px; margin-bottom: 20px; font-weight: bold;">' + section.title + '</h1><p style="font-size: 20px; max-width: 600px; margin: 0 auto;">' + section.content + '</p><button style="margin-top: 30px; padding: 15px 40px; font-size: 18px; background-color: #3b82f6; color: white; border: none; border-radius: 8px; cursor: pointer; align-self: center;">Get Started</button></section>';
+      } else if (section.type === 'features') {
+        var featuresHtml = '';
+        for (var i = 1; i <= 4; i++) {
+          featuresHtml += '<div style="padding: 30px; text-align: center; background-color: rgba(0,0,0,0.05); border-radius: 8px;"><div style="font-size: 40px; margin-bottom: 15px;">⭐</div><h3 style="font-size: 20px; margin-bottom: 10px;">Feature ' + i + '</h3><p>Description of this amazing feature</p></div>';
+        }
+        return '<section style="' + baseStyle + '"><h2 style="text-align: center; font-size: 36px; margin-bottom: 50px;">' + section.title + '</h2><div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px;">' + featuresHtml + '</div></section>';
+      } else if (section.type === 'gallery') {
+        var galleryHtml = '';
+        for (var i = 1; i <= 6; i++) {
+          galleryHtml += '<div style="aspect-ratio: 1; background-color: rgba(0,0,0,0.1); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 40px;">🖼️</div>';
+        }
+        return '<section style="' + baseStyle + '"><h2 style="text-align: center; font-size: 36px; margin-bottom: 50px;">' + section.title + '</h2><div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px;">' + galleryHtml + '</div></section>';
+      } else if (section.type === 'contact') {
+        return '<section style="' + baseStyle + '"><div style="max-width: 600px; margin: 0 auto;"><h2 style="text-align: center; font-size: 36px; margin-bottom: 40px;">' + section.title + '</h2><div style="display: flex; flex-direction: column; gap: 20px;"><input type="text" placeholder="Name" style="padding: 15px; border-radius: 8px; border: 1px solid #ddd;"><input type="email" placeholder="Email" style="padding: 15px; border-radius: 8px; border: 1px solid #ddd;"><textarea placeholder="Message" rows="5" style="padding: 15px; border-radius: 8px; border: 1px solid #ddd;"></textarea><button style="padding: 15px; background-color: #3b82f6; color: white; border: none; border-radius: 8px; cursor: pointer; font-size: 16px;">Send Message</button></div></div></section>';
+      } else {
+        return '<section style="' + baseStyle + '"><h2 style="font-size: 36px; margin-bottom: 20px;">' + section.title + '</h2><p style="font-size: 18px;">' + section.content + '</p></section>';
+      }
+    }
+
+    function renderFooter() {
+      var style = document.getElementById('footerStyle').value;
+      var content = document.getElementById('footerContent').value;
+      var bgColor = document.getElementById('footerBgColor').value;
+      var textColor = document.getElementById('footerTextColor').value;
+      var height = document.getElementById('footerHeight').value;
+
+      var baseStyle = 'background-color: ' + bgColor + '; color: ' + textColor + '; min-height: ' + height + '; display: flex; align-items: center; justify-content: center; padding: 40px;';
+
+      if (style === 'columns') {
+        return '<footer style="' + baseStyle + ' justify-content: space-around;"><div><h4 style="margin-bottom: 15px;">Company</h4><div style="display: flex; flex-direction: column; gap: 8px;"><span>About</span><span>Careers</span><span>Contact</span></div></div><div><h4 style="margin-bottom: 15px;">Resources</h4><div style="display: flex; flex-direction: column; gap: 8px;"><span>Blog</span><span>Help Center</span><span>Support</span></div></div><div><h4 style="margin-bottom: 15px;">Legal</h4><div style="display: flex; flex-direction: column; gap: 8px;"><span>Privacy</span><span>Terms</span><span>Cookie Policy</span></div></div></footer>';
+      } else if (style === 'social') {
+        return '<footer style="' + baseStyle + ' flex-direction: column; gap: 20px;"><div style="display: flex; gap: 20px; font-size: 24px;"><span>📘</span><span>🐦</span><span>📷</span><span>💼</span></div><p>' + content + '</p></footer>';
+      } else {
+        return '<footer style="' + baseStyle + '"><p>' + content + '</p></footer>';
+      }
+    }
+
+    function updatePreview() {
+      var preview = document.getElementById('preview');
+      var html = renderNavbar();
+      
+      for (var i = 0; i < sections.length; i++) {
+        html += renderSection(sections[i]);
+      }
+      
+      html += renderFooter();
+      preview.innerHTML = html;
+    }
+
+    function generateCode() {
+      var navbarLinks = document.getElementById('navbarLinks').value.split(',').map(function(l) { return l.trim(); });
+      
+      var code = '<!DOCTYPE html>\n<html lang="en">\n<head>\n  <meta charset="UTF-8">\n  <meta name="viewport" content="width=device-width, initial-scale=1.0">\n  <title>' + document.getElementById('navbarLogo').value + '</title>\n  <style>\n    * { margin: 0; padding: 0; box-sizing: border-box; }\n    body { font-family: -apple-system, BlinkMacSystemFont, \'Segoe UI\', sans-serif; }\n  </style>\n</head>\n<body>\n  ' + renderNavbar() + '\n  ';
+      
+      for (var i = 0; i < sections.length; i++) {
+        code += renderSection(sections[i]) + '\n  ';
+      }
+      
+      code += renderFooter() + '\n</body>\n</html>';
+      
+      document.getElementById('codeOutput').value = code;
+    }
+
+    function copyCode() {
+      var code = document.getElementById('codeOutput');
+      code.select();
+      document.execCommand('copy');
+      alert('Code copied to clipboard!');
+    }
+
+    updatePreview();
+  </script>
+</body>
+</html>

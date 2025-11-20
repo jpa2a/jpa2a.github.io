@@ -73,7 +73,7 @@ body {
 
   height: 100%;
   overflow-x: hidden;
-  background: var(--bleuc);
+  background: black;
   color: white;
   font-family: var(--body-font);
   position: relative;
@@ -992,3 +992,77 @@ footer{
     letter-spacing: 0.5rem;
 }
 
+
+
+/* logo */
+
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background-image: url('https://grainy-gradients.vercel.app/noise.svg');
+  opacity: 0.04;
+  mix-blend-mode: soft-light;
+  z-index: 9999;
+}
+
+/* Soft vignette behind everything */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(
+    circle,
+    rgba(0,0,0,0) 40%,
+    rgba(0,0,0,0.25) 100%
+  );
+  opacity: 0.4;
+  z-index: 9998;
+}
+
+/* Fixed logo layer */
+.background-logo-container {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: -1;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+}
+
+/* LOGO */
+.background-logo {
+  width: 100vw;
+  opacity: 0;
+  transform: translateY(20px) scale(0.72); /* vertical parallax start */
+  fill: currentColor;
+  color: #ffffff;
+  filter: drop-shadow(0 0 12px rgba(255,150,0,0.25));
+}
+
+/* DEEP, CLEAN Glow */
+.logo-glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 48vw; /* bigger */
+  height: 48vw;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(
+    circle,
+    rgba(255,130,0,0.28) 0%,
+    rgba(255,120,0,0.12) 35%,
+    rgba(255,120,0,0.06) 60%,
+    rgba(0,0,0,0) 90%
+  );
+  opacity: 0;
+  filter: blur(130px); /* deeper diffusion */
+}
