@@ -3,11 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-        <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
-
-      <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
-      <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/SplitText.min.js"></script>
-	  <script src="https://unpkg.com/lenis@1.3.15/dist/lenis.min.js"></script> 
+       
   <title>Inpulse Studio</title>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&family=Fauna+One&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Italiana&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
@@ -42,7 +38,7 @@
       max-width:var(--max-width);
       margin:0 auto;
       padding:0 0;
-      padding-top: 90px;
+    /*  padding-top: 190px;*/
     }
 
     /* NAVBAR */
@@ -234,9 +230,11 @@
       padding-right:12px;
     }
     .services{
-        padding-top: 110px;
+       /* padding-top: 110px;*/
         height: 100vh;
-       
+       display: flex;
+       flex-direction: column;
+       justify-content: center;
         overflow: hidden;
     
         
@@ -278,26 +276,51 @@
     .trust .left, .faq .left, .contact .left{
       padding-right:12px;
     }
+    .contact{
+      position: relative; /* AJOUTER */
+  z-index: 10; /* AJOUTER - au lieu de 9999 */
+  /* background-color: red; - RETIRER cette ligne */
+  opacity: 1;
+    }
     .trust{
-        min-height: 500vh;
-        overflow: hidden;
+        min-height: 300vh;
+      display: flex;
+      /*  background-color: blue;*/
+    }
+    .trust-sec{
+      height: 100%;
     }
     .faq{
         height: 100vh;
-        
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
         overflow: hidden;
     }
 
     .left{
         position: relative;
       
-        overflow: hidden;
     
     }
+
+ 
+     .rightt{
+   /*   background-color: yellow;*/
+      padding-top: 150px;
+      
+     
+    }
+      .rightt2{
+   /*   background-color: yellow;*/
+      padding-top: 150px;
+      
+     
+    }
     .trust-list{
-        position: fixed;
-        background-color: black;
-      list-style:disc;
+        padding-top: 150px;
+      /*  background-color: red;*/
+        height: 100vh;
       margin:8px 0 0 18px;
       color:var(--muted);
       font-size:15px;
@@ -311,9 +334,25 @@
     }
     .accordion-item{
       background:var(--panel);
-      border-radius:10px;
+      
       overflow:hidden;
       border:1px solid rgba(255,255,255,0.03);
+    }
+    .item1{
+      background-color: #d65a31;
+      border-top-left-radius: 10px;
+      border-bottom-right-radius: 10px;
+    }
+    .item2{
+      background-color: #eeeeee;
+      color: #393e46;
+      border-top-left-radius: 10px;
+      border-bottom-right-radius: 10px;
+    }
+    .item3{
+      background-color: #d65a31;
+      border-top-left-radius: 10px;
+      border-bottom-right-radius: 10px;
     }
     .acc-trigger{
       cursor:pointer;
@@ -350,8 +389,15 @@
     }
 
     /* CONTACT */
+    .contact{
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
     .contact-form{
       background:var(--card);
+      background-color:#d65a31;
       padding:20px;
       border-radius:12px;
       border:1px solid rgba(255,255,255,0.03);
@@ -386,12 +432,74 @@
     .form-note{ font-size:13px; color:var(--muted); margin-top:8px }
 
     /* FOOTER */
-    footer{
-      border-top:1px solid rgba(255,255,255,0.03);
-      padding:28px 0;
-      color:var(--muted);
-      font-size:13px;
-    }
+    
+footer{
+ 
+    width: 100%;
+    min-height: 300px;
+    display: flex;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    justify-items: center;
+    align-items: center;
+  
+    z-index: 10;
+    margin-top: 50px;
+}
+
+.foot-container{
+  width: 100%;
+      display: flex;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    justify-items: center;
+    align-items: center;
+    background-color: #000000;
+    z-index: 10;
+    padding-inline: 20px;
+}
+
+.foot{
+ 
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 30px;
+  
+
+}
+
+.foot-services{
+    color: var(--orange);
+    font-size: 1.2rem;
+     text-shadow: 1px 1px 6px #000000;
+}
+
+.foot-tech{
+    color: var(--bleuc);
+    font-size: 1.2rem;
+     text-shadow: 1px 1px 6px #000000;
+}
+
+
+.foot-news{
+    color: var(--orange);
+    font-size: 1.2rem;
+}
+
+.foot h5{
+    color: var(--blanc);
+    font-family: "Poppins";
+    font-size: 1.6rem;
+    font-weight: 200;
+    letter-spacing: 0.5rem;
+}
+
+
 
     /* Responsive */
     @media (max-width:900px){
@@ -449,6 +557,7 @@ body::before {
   justify-content: center;
   align-content: center;
   align-items: center;
+  z-index: 0;
 }
 
 /* LOGO */
@@ -482,6 +591,90 @@ body::before {
   
 }
 
+/* service */
+.service-detail {
+      opacity: 0;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      pointer-events: none;
+    }
+
+    .service-detail.active {
+      position: relative;
+      opacity: 1;
+      pointer-events: auto;
+    }
+    
+    .vignette {
+      cursor: pointer;
+    }
+
+
+/* Container principal */
+#content-container {
+  /* vos styles */
+}
+
+/* Chaque bloc de service */
+.service-detail {
+  /* vos styles pour chaque service */
+ 
+}
+
+/* Le service actuellement affiché */
+.service-detail.active {
+  /* vos styles pour le service actif */
+  
+}
+
+/* Titres dans les services */
+.service-detail h2 {
+  /* style pour le titre principal */
+  
+}
+
+.service-detail h3 {
+  /* style pour les sous-titres */
+}
+
+/* Paragraphes */
+.service-detail p {
+  /* vos styles */
+}
+
+.service-detail .lead {
+  /* style pour le paragraphe d'intro */
+}
+
+/* Listes */
+.service-detail ul {
+  /* style pour les listes */
+}
+
+.service-detail li {
+  /* style pour les items de liste */
+}
+
+.service-detail strong {
+  /* style pour le texte en gras */
+}
+
+/* Cibler un service spécifique */
+.service-detail[data-service="branding"] {
+  /* styles uniquement pour Branding */
+}
+
+.service-detail[data-service="branding"] h2 {
+  /* styles uniquement pour Branding */
+  font-size: 5rem;
+}
+
+.service-detail[data-service="uiux"] {
+  /* styles uniquement pour UI/UX */
+}
+
 
   </style>
 </head>
@@ -489,16 +682,17 @@ body::before {
   <header>
     <div class="wrap nav">
       <div class="brand">
+        <a href="#hero">
 <svg width="50px" height="50px" viewBox="0 0 2845 2857" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5;">
     <g transform="matrix(1,0,0,1,-355.18443,-343.373406)">
-        <path d="M355.512,3187.795L2476.772,3199.606C2939.449,3180.394 3186.872,2945.927 3199.606,2476.772L3187.795,343.701L1066.535,355.512C635.255,364.46 372.839,571.641 355.512,1066.535L355.512,3187.795Z" style="fill:rgb(185,75,0);stroke:black;stroke-width:0.65px;"/>
+        <path d="M355.512,3187.795L2476.772,3199.606C2939.449,3180.394 3186.872,2945.927 3199.606,2476.772L3187.795,343.701L1066.535,355.512C635.255,364.46 372.839,571.641 355.512,1066.535L355.512,3187.795Z" style="fill:#d65a31;stroke:black;stroke-width:0.65px;"/>
         <path d="M711.024,2832.283L1066.535,2844.094L1066.535,699.213C826.592,683.025 697.588,810.03 711.024,1054.724L711.024,2832.283Z" style="fill:rgb(5,15,0);stroke:black;stroke-opacity:0;stroke-width:0.65px;"/>
-        <path d="M2844.094,711.024L1777.559,711.024C1560.291,739.742 1441.341,857.84 1422.047,1066.535L1410.236,1765.748L1777.559,1777.559L1777.559,1245.614C1759.763,1117.398 1811.252,1050.769 1955.436,1066.535L2844.094,1054.724L2844.094,711.024Z" style="stroke:black;stroke-width:0.65px;"/>
+        <path d="M2844.094,711.024L1777.559,711.024C1560.291,739.742 1441.341,857.84 1422.047,1066.535L1410.236,1765.748L1777.559,1777.559L1777.559,1245.614C1759.763,1117.398 1811.252,1050.769 1955.436,1066.535L2844.094,1054.724L2844.094,711.024Z" style="fill:#eeeeee;stroke:black;stroke-width:0.65px;"/>
         <g transform="matrix(-0.999998,-0.002192,0.002192,-0.999998,4248.787248,3561.777596)">
-            <path d="M2844.094,711.024L1777.559,711.024C1560.291,739.742 1441.341,857.84 1422.047,1066.535L1410.236,1765.748L1777.559,1777.559L1777.559,1245.614C1759.763,1117.398 1811.252,1050.769 1955.436,1066.535L2844.094,1054.724L2844.094,711.024Z" style="stroke:black;stroke-width:0.65px;"/>
+            <path d="M2844.094,711.024L1777.559,711.024C1560.291,739.742 1441.341,857.84 1422.047,1066.535L1410.236,1765.748L1777.559,1777.559L1777.559,1245.614C1759.763,1117.398 1811.252,1050.769 1955.436,1066.535L2844.094,1054.724L2844.094,711.024Z" style="fill:#eeeeee;stroke:black;stroke-width:0.65px;"/>
         </g>
     </g>
-</svg></div>
+</svg></a></div>
       <nav>
         <ul>
           <li><a href="#services">Services</a></li>
@@ -536,7 +730,7 @@ body::before {
 
 
     <!-- HERO -->
-    <section class="hero" aria-label="Hero">
+    <section id="hero" class="hero" aria-label="Hero">
       <div class="wrap hero-inner">
         <div class="hero-inner-div">
             <div class="bando"></div>
@@ -555,51 +749,172 @@ body::before {
     </section>
 
     <!-- SERVICES -->
-    <section id="services" class="services wrap" aria-labelledby="services-title">
-      <div class="section-grid">
-        <div class="left">
-          <h2 id="services-title" class="section-title split2">Les differents services que nous offrons</h2>
-          <p class="lead split2">Notre Agence se spécialise dans la création de designs qui vous
-                 aiderons a convertir vos visiteurs en clients.
-                Que vous aillez besoins d'une mise a jour de votre site ou une construction de zero,
-                 nous sommes la pour vous aider et creer un design innovant et acrocheur.
-                  Elevez votre compagnie au niveau superieur avec Inpulse Studio.</p>
-        </div>
+     <section id="services" class="services wrap" aria-labelledby="services-title">
+    <div class="section-grid">
+      <div class="left">
+        <!-- AJOUTER: Wrapper avec position relative et id -->
+        <div id="content-container" style="position: relative;">
+          
+          <!-- AJOUTER: Wrapper pour le contenu par défaut avec classes et data-service -->
+          <div class="service-detail active" data-service="default">
+            <h2 id="services-title" class="section-title split2">Les differents services que nous offrons</h2>
+            <p class="lead split2">Notre Agence se spécialise dans la création de designs qui vous
+                   aiderons a convertir vos visiteurs en clients.
+                  Que vous aillez besoins d'une mise a jour de votre site ou une construction de zero,
+                   nous sommes la pour vous aider et creer un design innovant et acrocheur.
+                    Elevez votre compagnie au niveau superieur avec Inpulse Studio.</p>
+          </div>
 
-        <div class="right">
-          <div class="vignettes" role="list">
-            <div class="vignette" role="listitem" style="transform-style: preserve-3d"  data-tilt>
-              <h4  style="transform: translateZ(20px)">Branding</h4>
-              <p   style="transform: translateZ(20px)">Creation de Palettes couleur, logos et selection de typographie représentant au mieux votre marque.</p>
-            </div>
-            <div class="vignette" role="listitem" style="transform-style: preserve-3d"  data-tilt>
-              <h4  style="transform: translateZ(20px)">UI / UX Design</h4>
-              <p  style="transform: translateZ(20px)">Un design se doit d'etre accrocheur mais egalement clair et intuitif. nous pouvons vous aider a offrir la meilleur experience possible a vos utilisateurs.</p>
-            </div>
-            <div class="vignette" role="listitem" style="transform-style: preserve-3d"  data-tilt>
-              <h4  style="transform: translateZ(20px)">Developpement</h4>
-              <p  style="transform: translateZ(20px)">conception de base de données,creation de sites avec base de données type eCommerce, creation d'applications personnalisés.</p>
-            </div>
-            <div class="vignette" role="listitem" style="transform-style: preserve-3d"  data-tilt>
-              <h4  style="transform: translateZ(20px)">eCommerce</h4>
-              <p  style="transform: translateZ(20px)">Création de site eCommerce avec gestion de panier et paiements en ligne.</p>
-            </div>
-            <div class="vignette" role="listitem" style="transform-style: preserve-3d"  data-tilt>
-              <h4  style="transform: translateZ(20px)">Maintenance</h4>
-              <p  style="transform: translateZ(20px)">Hébergement, mise a jour des serveurs, sauvegardes.</p>
-            </div>
-            <div class="vignette" role="listitem" style="transform-style: preserve-3d"  data-tilt>
-              <h4  style="transform: translateZ(20px)">SEO</h4>
-              <p  style="transform: translateZ(20px)">Optimisations permettant d'optimiser au maximum le référencement aupres des moteurs de recherche tel que google.</p>
-            </div>
+          <!-- AJOUTER: Contenu détaillé pour Branding -->
+          <div class="service-detail" data-service="branding">
+            <h2 class="section-title">Branding</h2>
+            <p class="lead">Création de Palettes couleur, logos et sélection de typographie représentant au mieux votre marque.</p>
+            
+            <h3>Ce que nous offrons :</h3>
+            <ul>
+              <li><strong>Identité visuelle complète</strong> - Développement d'une identité de marque cohérente et mémorable</li>
+              <li><strong>Création de logo</strong> - Design de logos uniques qui capturent l'essence de votre entreprise</li>
+              <li><strong>Palette de couleurs</strong> - Sélection stratégique de couleurs qui évoquent les bonnes émotions</li>
+              <li><strong>Typographie</strong> - Choix de polices qui reflètent la personnalité de votre marque</li>
+              <li><strong>Guide de style</strong> - Documentation complète pour maintenir la cohérence de votre marque</li>
+              <li><strong>Applications de marque</strong> - Cartes de visite, papeterie, signatures email, etc.</li>
+            </ul>
+            
+            <p><strong>Résultat :</strong> Une identité de marque forte et reconnaissable qui vous distingue de la concurrence.</p>
+          </div>
+
+          <!-- AJOUTER: Contenu détaillé pour UI/UX -->
+          <div class="service-detail" data-service="uiux">
+            <h2 class="section-title">UI / UX Design</h2>
+            <p class="lead">Un design se doit d'être accrocheur mais également clair et intuitif. Nous pouvons vous aider à offrir la meilleure expérience possible à vos utilisateurs.</p>
+            
+            <h3>Notre processus :</h3>
+            <ul>
+              <li><strong>Recherche utilisateur</strong> - Analyse approfondie de votre audience cible et de leurs besoins</li>
+              <li><strong>Wireframes & Prototypes</strong> - Création de maquettes interactives pour valider les concepts</li>
+              <li><strong>Design d'interface</strong> - Interfaces modernes, intuitives et accessibles</li>
+              <li><strong>Tests utilisateurs</strong> - Validation de l'expérience avec de vrais utilisateurs</li>
+              <li><strong>Design system</strong> - Bibliothèque de composants réutilisables pour la cohérence</li>
+              <li><strong>Responsive design</strong> - Expérience optimale sur tous les appareils</li>
+            </ul>
+            
+            <p><strong>Résultat :</strong> Une interface qui convertit les visiteurs en clients grâce à une expérience utilisateur exceptionnelle.</p>
+          </div>
+
+          <!-- AJOUTER: Contenu détaillé pour Développement -->
+          <div class="service-detail" data-service="dev">
+            <h2 class="section-title">Développement</h2>
+            <p class="lead">Conception de base de données, création de sites avec base de données type eCommerce, création d'applications personnalisées.</p>
+            
+            <h3>Nos expertises :</h3>
+            <ul>
+              <li><strong>Sites web sur mesure</strong> - Développement de sites performants et évolutifs</li>
+              <li><strong>Applications web</strong> - Solutions personnalisées adaptées à vos besoins spécifiques</li>
+              <li><strong>Base de données</strong> - Architecture et conception de bases de données robustes</li>
+              <li><strong>APIs & Intégrations</strong> - Connexion avec vos outils et systèmes existants</li>
+              <li><strong>Technologies modernes</strong> - React, Node.js, Python, PHP et plus encore</li>
+              <li><strong>Performance</strong> - Optimisation pour des temps de chargement ultra-rapides</li>
+            </ul>
+            
+            <p><strong>Résultat :</strong> Des solutions techniques solides, sécurisées et performantes qui font croître votre entreprise.</p>
+          </div>
+
+          <!-- AJOUTER: Contenu détaillé pour eCommerce -->
+          <div class="service-detail" data-service="ecommerce">
+            <h2 class="section-title">eCommerce</h2>
+            <p class="lead">Création de site eCommerce avec gestion de panier et paiements en ligne.</p>
+            
+            <h3>Solutions eCommerce complètes :</h3>
+            <ul>
+              <li><strong>Boutique en ligne</strong> - Plateforme complète pour vendre vos produits en ligne</li>
+              <li><strong>Gestion de catalogue</strong> - Système intuitif pour gérer vos produits et inventaire</li>
+              <li><strong>Panier & Checkout</strong> - Processus d'achat optimisé pour maximiser les conversions</li>
+              <li><strong>Paiements sécurisés</strong> - Intégration Stripe, PayPal et autres solutions de paiement</li>
+              <li><strong>Gestion des commandes</strong> - Suivi complet des commandes et statuts de livraison</li>
+              <li><strong>Multi-devises</strong> - Support pour vendre internationalement</li>
+            </ul>
+            
+            <p><strong>Résultat :</strong> Une boutique en ligne professionnelle qui génère des revenus 24/7.</p>
+          </div>
+
+          <!-- AJOUTER: Contenu détaillé pour Maintenance -->
+          <div class="service-detail" data-service="maintenance">
+            <h2 class="section-title">Maintenance</h2>
+            <p class="lead">Hébergement, mise à jour des serveurs, sauvegardes.</p>
+            
+            <h3>Services de maintenance :</h3>
+            <ul>
+              <li><strong>Hébergement performant</strong> - Serveurs optimisés pour des performances maximales</li>
+              <li><strong>Sauvegardes automatiques</strong> - Backups quotidiens pour protéger vos données</li>
+              <li><strong>Mises à jour</strong> - Updates régulières de sécurité et de fonctionnalités</li>
+              <li><strong>Monitoring 24/7</strong> - Surveillance continue pour détecter les problèmes</li>
+              <li><strong>Support technique</strong> - Assistance rapide en cas de problème</li>
+              <li><strong>Optimisation continue</strong> - Amélioration des performances au fil du temps</li>
+            </ul>
+            
+            <p><strong>Résultat :</strong> Un site toujours en ligne, rapide et sécurisé sans que vous ayez à vous en soucier.</p>
+          </div>
+
+          <!-- AJOUTER: Contenu détaillé pour SEO -->
+          <div class="service-detail" data-service="seo">
+            <h2 class="section-title">SEO</h2>
+            <p class="lead">Optimisations permettant d'optimiser au maximum le référencement auprès des moteurs de recherche tel que Google.</p>
+            
+            <h3>Stratégie SEO complète :</h3>
+            <ul>
+              <li><strong>Audit SEO</strong> - Analyse complète de votre site et identification des opportunités</li>
+              <li><strong>Recherche de mots-clés</strong> - Identification des termes les plus pertinents pour votre business</li>
+              <li><strong>Optimisation technique</strong> - Structure, vitesse, mobile-friendly, schema markup</li>
+              <li><strong>Contenu optimisé</strong> - Création de contenu qui plaît aux utilisateurs ET à Google</li>
+              <li><strong>Link building</strong> - Stratégie de liens pour augmenter votre autorité</li>
+              <li><strong>Rapports mensuels</strong> - Suivi détaillé de vos positions et du trafic organique</li>
+            </ul>
+            
+            <p><strong>Résultat :</strong> Plus de visibilité sur Google, plus de trafic qualifié, plus de clients.</p>
+          </div>
+          
+        </div>
+      </div>
+      <div class="right">
+        <div class="vignettes" role="list">
+          <!-- AJOUTER: data-service="branding" -->
+          <div class="vignette" role="listitem" style="transform-style: preserve-3d" data-tilt data-service="branding">
+            <h4 style="transform: translateZ(20px)">Branding</h4>
+            <p style="transform: translateZ(20px)">Creation de Palettes couleur, logos et selection de typographie représentant au mieux votre marque.</p>
+          </div>
+          <!-- AJOUTER: data-service="uiux" -->
+          <div class="vignette" role="listitem" style="transform-style: preserve-3d" data-tilt data-service="uiux">
+            <h4 style="transform: translateZ(20px)">UI / UX Design</h4>
+            <p style="transform: translateZ(20px)">Un design se doit d'etre accrocheur mais egalement clair et intuitif. nous pouvons vous aider a offrir la meilleur experience possible a vos utilisateurs.</p>
+          </div>
+          <!-- AJOUTER: data-service="dev" -->
+          <div class="vignette" role="listitem" style="transform-style: preserve-3d" data-tilt data-service="dev">
+            <h4 style="transform: translateZ(20px)">Developpement</h4>
+            <p style="transform: translateZ(20px)">conception de base de données,creation de sites avec base de données type eCommerce, creation d'applications personnalisés.</p>
+          </div>
+          <!-- AJOUTER: data-service="ecommerce" -->
+          <div class="vignette" role="listitem" style="transform-style: preserve-3d" data-tilt data-service="ecommerce">
+            <h4 style="transform: translateZ(20px)">eCommerce</h4>
+            <p style="transform: translateZ(20px)">Création de site eCommerce avec gestion de panier et paiements en ligne.</p>
+          </div>
+          <!-- AJOUTER: data-service="maintenance" -->
+          <div class="vignette" role="listitem" style="transform-style: preserve-3d" data-tilt data-service="maintenance">
+            <h4 style="transform: translateZ(20px)">Maintenance</h4>
+            <p style="transform: translateZ(20px)">Hébergement, mise a jour des serveurs, sauvegardes.</p>
+          </div>
+          <!-- AJOUTER: data-service="seo" -->
+          <div class="vignette" role="listitem" style="transform-style: preserve-3d" data-tilt data-service="seo">
+            <h4 style="transform: translateZ(20px)">SEO</h4>
+            <p style="transform: translateZ(20px)">Optimisations permettant d'optimiser au maximum le référencement aupres des moteurs de recherche tel que google.</p>
           </div>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
     <!-- TRUST -->
     <section id="trust" class="trust wrap" aria-labelledby="trust-title">
-      <div class="section-grid">
+      <div class="trust-sec section-grid">
       
         <div class="left">
           <div class="trust-list tl1" aria-label="Reasons to trust">
@@ -620,9 +935,39 @@ Nous concevons des sites web optimisés pour le SEO afin d’augmenter votre tra
                 <p>Profitez d’un site web complet avec hébergement inclus, sans frais cachés ni complications.</p>
           </div>
         </div>
-          <div class="tight">
+          <div class="rightt">
           <h2 id="trust-title" class="section-title split inv">Pourquoi nous faire confiance</h2>
           <p class="lead split2 inv">rien — pour l'instant !!!</p>
+        </div>
+      </div>
+    </section>
+     <!-- PROCESS -->
+    <section id="process" class="process wrap" aria-labelledby="process-title">
+      <div class="section-grid">
+      
+        
+          <div class="rightt2">
+          <h2 id="trust-title" class="section-title split inv">Notre Processus</h2>
+          <p class="lead split2 inv">rien — pour l'instant !!!</p>
+        </div>
+        <div class=" left">
+          <div class="trust-list tl1" aria-label="Reasons to trust">
+            <h3>Solutions creatives et sur mesure</h3>
+            <p>Nous prenons le temps de bien comprendre vos besoins afin de vous apporté la solution la plus adapté.</p>
+          </div>
+          <div class="trust-list tl2" aria-label="Reasons to trust">
+            <h3>Optimisation SEO</h3>
+                <p>Un site beau, rapide et bien référencé.
+Nous concevons des sites web optimisés pour le SEO afin d’augmenter votre trafic et vos ventes.</p>
+          </div>
+          <div class="trust-list tl3" aria-label="Reasons to trust">
+            <h3>Processus transparent</h3>
+                <p>Déroulement des projets par étapes avec validation du client a chaque étape</p>
+          </div>
+          <div class="trust-list tl4" aria-label="Reasons to trust">
+            <h3>Des packs tout-en-un, simples et avantageux.</h3>
+                <p>Profitez d’un site web complet avec hébergement inclus, sans frais cachés ni complications.</p>
+          </div>
         </div>
       </div>
     </section>
@@ -639,7 +984,7 @@ Nous concevons des sites web optimisés pour le SEO afin d’augmenter votre tra
 
         <div class="right">
           <div class="accordion" id="accordion">
-            <article class="accordion-item">
+            <article class="accordion-item item1">
               <div class="acc-trigger" aria-expanded="false" tabindex="0">
                 <h5>Combien de temps faut-il compter pour réaliser un site web ?</h5>
                 <div class="acc-icon">+</div>
@@ -649,7 +994,7 @@ Nous concevons des sites web optimisés pour le SEO afin d’augmenter votre tra
               </div>
             </article>
 
-            <article class="accordion-item">
+            <article class="accordion-item item2">
               <div class="acc-trigger" aria-expanded="false" tabindex="0">
                 <h5>Quel est le prix pour un site web ?</h5>
                 <div class="acc-icon">+</div>
@@ -659,7 +1004,7 @@ Nous concevons des sites web optimisés pour le SEO afin d’augmenter votre tra
               </div>
             </article>
 
-            <article class="accordion-item">
+            <article class="accordion-item item3">
               <div class="acc-trigger" aria-expanded="false" tabindex="0">
                 <h5>quel est le montant mensuel pour l'hébergement d'un site web ?</h5>
                 <div class="acc-icon">+</div>
@@ -711,13 +1056,43 @@ Nous concevons des sites web optimisés pour le SEO afin d’augmenter votre tra
     </section>
   </main>
 
-  <footer class="wrap" role="contentinfo">
-    <div style="display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap;">
-      <div>© <strong>All Rights Reserved</strong> — Inpulse studio</div>
-      <div style="color:var(--muted);">black</div>
-    </div>
-  </footer>
+          <footer>
+            <div class="foot-container">
+			<div class="foot">
+				<div class="foot-services">
+					<h5>SERVICES</h5>
+					<div>Web Design</div>
+					<div>Logos</div>
+					<div>Developpement</div>
+					<div>SEO</div>
+					<div>Hebergement</div>
+					<div>Maintenance</div>
+				</div>
+				<div class="foot-tech">
+					<h5>TECHNOLOGIES</h5>
+					<div>html</div>
+					<div>css</div>
+					<div>javascript</div>
+					<div>React</div>
+					<div>Vue</div>
+					<div>Laravel</div>
+					<div>SQL</div>
+				</div>
+				<div class="foot-news">
+					<h5>NOUS SUIVRE</h5>
+					<div>Newsletter</div>
+					
+				</div>
+			</div>
+            <div class="legal">Copyright ©2025 All rights reserved InpulseStudio</div>
+            </div>
+        </footer>
 
+   <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+
+      <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/SplitText.min.js"></script>
+	  <script src="https://unpkg.com/lenis@1.3.15/dist/lenis.min.js"></script> 
   <script>
     // Accordion behavior: click or keyboard to toggle; animate height.
     (function(){
@@ -928,6 +1303,7 @@ document.addEventListener("DOMContentLoaded", () =>  {
             start: "top 80%",
             end: "80% bottom",
             scrub: 0.5,
+           
             invalidateOnRefresh: true,
             markers: false,
         },   
@@ -937,7 +1313,7 @@ document.addEventListener("DOMContentLoaded", () =>  {
                  ".vignette",  
             ],
             {
-                autoAlpha:0, x:300, stagger: 0.2
+                autoAlpha:0, x:600, stagger: 0.2
             },
             {
                 autoAlpha:1, x:0, stagger: 0.2
@@ -953,7 +1329,7 @@ document.addEventListener("DOMContentLoaded", () =>  {
             end: "70% bottom",
             scrub: 0.5,
             invalidateOnRefresh: true,
-            markers: true,
+            markers: false,
         },   
     })
     .fromTo(
@@ -969,7 +1345,7 @@ document.addEventListener("DOMContentLoaded", () =>  {
 
         )
     ;
-
+/* 
      gsap.timeline({
         scrollTrigger: {
             trigger:".trust",
@@ -979,7 +1355,7 @@ document.addEventListener("DOMContentLoaded", () =>  {
             invalidateOnRefresh: true,
             markers: false,
             pin: true,
-            pinSpacing: false,
+            pinSpacing: true,
         },   
     })
     .fromTo(
@@ -1078,10 +1454,137 @@ document.addEventListener("DOMContentLoaded", () =>  {
         )
         ;
 
+ */
+
+ /*
+ scrollTrigger.create({
+    trigger:".trust",
+    start: "top top",
+    end: "bottom bottom",
+    pin: ".right",
+ })
+*/
+/*
+gsap.to(".right", {
+  scrollTrigger: {
+    trigger: ".trust",
+    start: "top top",
+    end: "bottom bottom",
+    pin: true,
+    pinSpacing: false
+  }
+});
+*/
+/*
+gsap.to(".right", {
+  x: 0, // does nothing but required for .to()
+  scrollTrigger: {
+    trigger: ".trust",
+    start: "top top",
+    end: "bottom bottom",
+    pin: true,
+    pinSpacing: false
+  }
+});
+*/
 
 
+ const trust = document.querySelector('.trust');
+    const right = document.querySelector('.rightt');
+
+   
+
+    // pin only the right column — end is the remaining height of .trust
+    ScrollTrigger.create({
+      trigger: right,
+      start: "top top",
+      end: () => "+=" + (trust.offsetHeight - window.innerHeight),
+      pin: true,
+      pinSpacing: true,
+      markers: false,
+      invalidateOnRefresh: true
+    });
+
+    
+ const process = document.querySelector('.process');
+    const right2 = document.querySelector('.rightt2');
+
+   
+
+    // pin only the right column — end is the remaining height of .trust
+    ScrollTrigger.create({
+      trigger: right2,
+      start: "top top",
+      end: () => "+=" + (process.offsetHeight - window.innerHeight),
+      pin: true,
+      pinSpacing: true,
+      markers: false,
+      invalidateOnRefresh: true
+    });
+
+
+
+
+
+/* VIGNETTE MENU  */
+ let currentService = 'default';
+
+    // Fonction pour changer le contenu avec animation GSAP
+    function switchContent(serviceName) {
+      if (currentService === serviceName) return;
+
+      const container = document.getElementById('content-container');
+      const currentContent = container.querySelector('.service-detail.active');
+      const newContent = container.querySelector(`[data-service="${serviceName}"]`);
+
+      if (!newContent) return;
+
+      // Timeline GSAP pour l'animation
+      const tl = gsap.timeline();
+
+      // Animer la sortie du contenu actuel (swipe vers la gauche)
+      tl.to(currentContent, {
+        x: -100,
+        opacity: 0,
+        duration: 0.4,
+        ease: 'power2.in',
+        onComplete: () => {
+          currentContent.classList.remove('active');
+        }
+      });
+
+      // Préparer le nouveau contenu (positionné à droite)
+      tl.set(newContent, {
+        x: -200,
+        opacity: 0
+      });
+
+      // Animer l'entrée du nouveau contenu (swipe depuis la droite)
+      tl.to(newContent, {
+        x: 0,
+        opacity: 1,
+        duration: 0.5,
+        ease: 'power2.out',
+        onStart: () => {
+          newContent.classList.add('active');
+        }
+      });
+
+      currentService = serviceName;
+    }
+
+    // Ajouter les event listeners sur les vignettes
+    document.querySelectorAll('.vignette').forEach(vignette => {
+      vignette.addEventListener('click', () => {
+        const serviceName = vignette.getAttribute('data-service');
+        switchContent(serviceName);
+      });
+    });
 
 })
+
+
+
 /*
 // Split the text into lines and words (or chars)
 let split2 = new SplitText(".split2", {
