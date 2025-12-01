@@ -583,6 +583,9 @@
       padding:20px;
       border-radius:12px;
       border:1px solid rgba(255,255,255,0.03);
+        @media(width < 500px ){
+          border-radius: 0;
+        }
     }
     .form-row{ display:flex; gap:12px; margin-bottom:12px; }
     .form-row .field{ flex:1; display:flex; flex-direction:column; gap:6px; }
@@ -1596,7 +1599,7 @@ body::before {
               </div>
               <div class="field">
                 <label for="email">Email</label>
-                <input id="email" name="email" type="email" placeholder="example@google.com" required>
+                <input id="email" name="email" type="email" placeholder="example@gmail.com" required>
               </div>
             </div>
 
