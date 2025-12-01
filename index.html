@@ -117,6 +117,7 @@
          @media( width < 520px){
           width: 100%;
           margin-bottom: 10px;
+          margin-top: 10px;
         }
     }
     .inner-band{
@@ -137,6 +138,9 @@
         font-weight: 400;
         text-align: left;
         line-height: 120%;
+         @media( width < 520px){
+          font-size: 1rem;
+        }
     }
 
 
@@ -190,7 +194,7 @@
         }
     }
     .hero-title{
-      font-size: clamp(5rem, 13vw, 20rem);
+      font-size: clamp(4rem, 13vw, 20rem);
       line-height:65%;
       font-weight:800;
       color:var(--text);
@@ -345,12 +349,17 @@
         flex-direction: column;
         justify-content: center;
         overflow: hidden;
+         
     }
     .faq-left{
         display: flex;
         justify-content: center;
         align-content: center;
         align-items: center;
+          @media (width < 520px){
+          flex-direction:column;
+          
+        }
     }
     .faq-logo svg{
         height: 150px;
@@ -377,6 +386,7 @@
     .rightt{
        @media ( width < 520px ){
         padding-top: 100px;
+        width: 100%;
         
       }
     }
@@ -421,6 +431,11 @@
     .trust-svg svg{
         height: 300px;
         width: 300px;
+           @media (width < 520px){
+          height: 150px;
+          width: 150px;
+          
+        }
     }
 
     .process-svg {
@@ -432,6 +447,11 @@
         height: 300px;
         width: 300px;
         color: #d65a31;
+          @media (width < 520px){
+          height: 150px;
+          width: 150px;
+          
+        }
     }
 
        .process-svg svg .st0 {
